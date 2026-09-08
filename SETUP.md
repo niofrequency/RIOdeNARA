@@ -62,11 +62,33 @@ window.RDN_WHATSAPP_NUMBER = "6281234567890";
 
 Use international format: country code first, no leading `0`, no spaces, no `+`. An Indonesian number written locally as `0812-3456-7890` becomes `6281234567890`.
 
-## 5. Load your menu
+## 5. Deploying on Vercel
+
+The repo already includes everything Vercel needs (`vercel.json`, `package.json`, `scripts/generate-config.js`) — when you import this repository into Vercel, it runs `npm run build` before every deploy, which writes your Firebase config and WhatsApp number into `js/firebase-config.js` from environment variables. You never commit real credentials to git this way.
+
+In your Vercel project → **Settings → Environment Variables**, add these (Production, and Preview if you want preview deploys to work too):
+
+| Variable | Value |
+|---|---|
+| `FIREBASE_API_KEY` | the `apiKey` from your Firebase web app config |
+| `FIREBASE_AUTH_DOMAIN` | the `authDomain`, e.g. `rio-de-nara.firebaseapp.com` |
+| `FIREBASE_PROJECT_ID` | the `projectId`, e.g. `rio-de-nara` |
+| `FIREBASE_STORAGE_BUCKET` | the `storageBucket`, e.g. `rio-de-nara.appspot.com` |
+| `FIREBASE_MESSAGING_SENDER_ID` | the `messagingSenderId` |
+| `FIREBASE_APP_ID` | the `appId` |
+| `WHATSAPP_NUMBER` | your WhatsApp number, international format, no `+`, no leading `0` — e.g. `6281234567890` |
+
+All seven come from the same two places you already used in steps 1 and 4 above — the Firebase web app config object, and your own WhatsApp number. After adding them, redeploy (or trigger a new deploy by pushing a commit) so the build step picks them up.
+
+None of these values are secret — they're safe to see in your deployed site's JavaScript. Using env vars here is about convenience and keeping your specific numbers out of git history, not about hiding them; real protection is the Firestore rules from step 2.
+
+Not using Vercel, or want to test locally first? Skip this section entirely and just edit `js/firebase-config.js` directly as described in step 1 — the site works exactly the same either way.
+
+## 6. Load your menu
 
 Go to `your-site-url/admin/`, sign in, open the **Menu** tab, and click **Load starter menu** to add 12 sample items you can immediately edit — rename them, change prices, mark items unavailable, delete what you don't need, or add your own from scratch with the form at the bottom of that tab. Changes appear on `order.html` right away.
 
-## 6. Try it
+## 7. Try it
 
 - Visit `order.html`, add a few items, and submit a test order with your own phone number.
 - Visit `reserve.html` and submit a test reservation.
@@ -77,5 +99,5 @@ Go to `your-site-url/admin/`, sign in, open the **Menu** tab, and click **Load s
 ### Notes
 
 - `/admin` is not linked from the public site navigation and is marked `noindex` for search engines, but it is still reachable by anyone who guesses the URL until Firebase Authentication is connected — **do this setup before sharing your site's link widely**, so the page is actually login-protected rather than blank.
-- This site is fully static (no server) — Firebase's client SDK talks directly to Google's servers from the visitor's browser, so it works on GitHub Pages or any static host with no extra deployment steps.
+- This site is fully static (no server) — Firebase's client SDK talks directly to Google's servers from the visitor's browser. On Vercel it picks up config from environment variables via the `npm run build` step; on GitHub Pages or any other static host, just edit `js/firebase-config.js` directly and skip the build step entirely.
 - If you ever want to reset the starter menu, just delete the items in the Menu tab and click **Load starter menu** again.

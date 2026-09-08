@@ -15,6 +15,14 @@
  * web config is meant to be public/client-side. Real protection comes
  * from the Firestore security rules in firestore.rules, which must be
  * pasted into your Firebase project as described in SETUP.md.
+ *
+ * Deploying on Vercel? You don't need to edit this file at all — set
+ * the matching environment variables in your Vercel project settings
+ * instead, and Vercel's build step (scripts/generate-config.js) writes
+ * them in here automatically on every deploy. See SETUP.md → "Deploying
+ * on Vercel" for the exact variable names. Editing this file directly
+ * still works for any other static host (GitHub Pages, Netlify, etc.)
+ * that doesn't run a build step.
  */
 
 window.RDN_FIREBASE_CONFIG = {
