@@ -5,72 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reserve a Table — RiO de NARA</title>
 <meta name="description" content="Reserve a table at RiO de NARA in Timika, Papua. Tell us when you're coming and we'll confirm on WhatsApp.">
+<link rel="canonical" href="https://rio-de-nara.vercel.app/reserve.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900&family=Work+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900&family=Work+Sans:wght@300;400;500;600&display=swap');
-
-:root{
-  --ink:#171512; --panel:#1e1a16; --panel-2:#221d18;
-  --red:#c22a17; --red-deep:#7e1a0d; --gold:#eecf6a;
-  --cream:#f3ecdd; --cream-dim:#cfc4ac; --line:rgba(238,207,106,0.22);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--ink);color:var(--cream);font-family:'Work Sans',sans-serif;line-height:1.6;min-height:100vh;}
-h1,h2{font-family:'Fraunces',serif;font-weight:700;color:var(--cream);letter-spacing:-0.01em;}
-a{color:inherit;}
-:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-.wrap{max-width:560px;margin:0 auto;padding:0 24px;}
-
 header.top{
   position:sticky; top:0; z-index:20;
   display:flex; align-items:center; justify-content:space-between;
-  padding:18px 24px; background:rgba(23,21,18,0.95); backdrop-filter:blur(6px);
+  padding:16px 24px; background:rgba(20,17,14,0.96); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
 }
-.brandmark{display:flex;align-items:center;gap:10px;}
-.brandmark img{height:32px;width:32px;border-radius:50%;object-fit:cover;}
-.brandmark span{font-family:'Fraunces',serif;font-weight:700;font-size:1rem;}
 .top-actions{display:flex;align-items:center;gap:14px;}
 .back-link{font-size:0.82rem;color:var(--cream-dim);}
 .back-link:hover{color:var(--gold);}
-.lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:0.72rem;}
-.lang-toggle button{background:transparent;border:0;color:var(--cream-dim);padding:6px 11px;cursor:pointer;font-family:inherit;font-size:inherit;}
-.lang-toggle button.active{background:var(--gold);color:var(--ink);font-weight:600;}
 
-main{padding:60px 0 120px;}
-.kicker{font-size:0.82rem;color:var(--gold);letter-spacing:0.04em;margin-bottom:12px;}
-.page-head h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.1;}
-.page-head p{margin-top:16px;color:var(--cream-dim);font-size:1.02rem;}
-
-form{margin-top:40px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:30px 26px;}
-.field{margin-top:16px;}
-.field:first-child{margin-top:0;}
-.field label{display:block;font-size:0.8rem;color:var(--cream-dim);margin-bottom:6px;letter-spacing:0.02em;}
-.field input,.field textarea{
-  width:100%; padding:11px 12px; background:var(--panel-2); border:1px solid var(--line);
-  border-radius:2px; color:var(--cream); font-family:inherit; font-size:0.92rem;
+.reserve-layout{
+  display:grid; grid-template-columns:1fr 1.05fr; min-height:calc(100vh - 65px);
 }
-.field textarea{resize:vertical;min-height:70px;}
+.reserve-context{position:relative; overflow:hidden; min-height:280px;}
+.reserve-context img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 35%;
+}
+.reserve-context::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(10,9,8,0.15) 0%, rgba(10,9,8,0.55) 70%, rgba(10,9,8,0.85) 100%);
+}
+.reserve-context .ctx-copy{
+  position:absolute; left:0; right:0; bottom:0; padding:40px; z-index:2;
+}
+.reserve-context .ctx-kicker{font-size:0.78rem; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;}
+.reserve-context h2{font-size:clamp(1.8rem,3.4vw,2.6rem); line-height:1.1; max-width:380px;}
+
+.reserve-form-col{padding:56px 40px 60px; display:flex; align-items:flex-start; justify-content:center;}
+.reserve-form-wrap{width:100%; max-width:460px;}
+.kicker{font-size:0.82rem;color:var(--gold);letter-spacing:0.08em;margin-bottom:12px;text-transform:uppercase;}
+.page-head h1{font-size:clamp(1.9rem,4vw,2.5rem);line-height:1.1;}
+.page-head p{margin-top:14px;color:var(--cream-dim);font-size:1.02rem;}
+
+form.reserve-card{margin-top:34px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:28px 26px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 
 .submit-btn{
-  width:100%; margin-top:22px; padding:14px; background:var(--red); color:var(--cream);
+  width:100%; margin-top:22px; padding:15px; background:var(--red); color:var(--cream);
   border:0; border-radius:2px; font-size:0.92rem; letter-spacing:0.02em; cursor:pointer;
-  font-family:inherit;
+  font-family:inherit; min-height:48px; transition:background .2s, transform .18s;
 }
-.submit-btn:hover{background:var(--red-deep);}
-.submit-btn:disabled{opacity:0.6;cursor:default;}
-.form-msg{margin-top:14px;font-size:0.85rem;padding:10px 12px;border-radius:2px;}
-.form-msg.success{background:rgba(96,180,110,0.15);color:#8fd39f;border:1px solid rgba(96,180,110,0.35);}
-.form-msg.error{background:rgba(194,42,23,0.15);color:#f2a89a;border:1px solid rgba(194,42,23,0.35);}
+.submit-btn:hover{background:var(--red-deep); transform:translateY(-2px);}
+.submit-btn:disabled{opacity:0.6;cursor:default;transform:none;}
 
-.notice{
-  background:var(--panel-2); border:1px solid var(--line); border-radius:4px;
-  padding:14px 18px; font-size:0.85rem; color:var(--cream-dim); margin-top:30px;
+@media (max-width:900px){
+  .reserve-layout{grid-template-columns:1fr;}
+  .reserve-context{min-height:200px;}
+  .reserve-context .ctx-copy{display:none;}
+  .reserve-form-col{padding:32px 20px 60px;}
 }
-
 @media (max-width:520px){
   .field-row{grid-template-columns:1fr;}
 }
@@ -80,7 +74,7 @@ form{margin-top:40px;background:var(--panel);border:1px solid var(--line);border
 
 <header class="top">
   <a href="index.html" class="brandmark">
-    <img src="images/logo.webp" alt="RiO de NARA logo">
+    <img src="images/logo.webp" width="32" height="32" alt="RiO de NARA logo">
     <span>RiO de NARA</span>
   </a>
   <div class="top-actions">
@@ -92,50 +86,61 @@ form{margin-top:40px;background:var(--panel);border:1px solid var(--line);border
   </div>
 </header>
 
-<main>
-  <div class="wrap">
-    <div class="page-head">
-      <div class="kicker" data-i18n="reserve.kicker">Reserve a Table</div>
-      <h1 data-i18n="reserve.h2">Save your table under the gate.</h1>
-      <p data-i18n="reserve.intro">Tell us when you're coming and how many — we'll confirm on WhatsApp.</p>
+<main class="reserve-layout">
+  <div class="reserve-context">
+    <img src="images/venue-courtyard.webp" alt="Dining courtyard at RiO de NARA under red lanterns" loading="eager" decoding="async">
+    <div class="ctx-copy">
+      <div class="ctx-kicker" data-i18n="reserve.kicker">Reserve a Table</div>
+      <h2 data-i18n="reserve.h2">Save your table under the gate.</h2>
     </div>
+  </div>
 
-    <form id="reserveForm">
-      <div class="field">
-        <label for="resName" data-i18n="order.form.name">Full name</label>
-        <input type="text" id="resName" name="resName" required>
+  <div class="reserve-form-col">
+    <div class="reserve-form-wrap">
+      <div class="page-head">
+        <div class="kicker" data-i18n="reserve.kicker">Reserve a Table</div>
+        <h1 data-i18n="reserve.h2">Save your table under the gate.</h1>
+        <p data-i18n="reserve.intro">Tell us when you're coming and how many — we'll confirm on WhatsApp.</p>
       </div>
-      <div class="field">
-        <label for="resPhone" data-i18n="order.form.phone">Phone / WhatsApp number</label>
-        <input type="tel" id="resPhone" name="resPhone" required>
-      </div>
-      <div class="field field-row">
-        <div>
-          <label for="resDate" data-i18n="reserve.form.date">Date</label>
-          <input type="date" id="resDate" name="resDate" required>
-        </div>
-        <div>
-          <label for="resTime" data-i18n="reserve.form.time">Time</label>
-          <input type="time" id="resTime" name="resTime" required>
-        </div>
-      </div>
-      <div class="field">
-        <label for="resParty" data-i18n="reserve.form.party">Number of guests</label>
-        <input type="number" id="resParty" name="resParty" min="1" max="100" required>
-      </div>
-      <div class="field">
-        <label for="resNotes" data-i18n="order.form.notes">Notes (optional)</label>
-        <textarea id="resNotes" name="resNotes"></textarea>
-      </div>
-      <button type="submit" class="submit-btn" id="submitBtn" data-i18n="reserve.form.submit">Send reservation via WhatsApp</button>
-      <div id="formMsg"></div>
-    </form>
 
-    <div id="unconfiguredNotice" class="notice" data-i18n="order.notconfigured" hidden>Online ordering isn't fully set up yet — please contact RiO de NARA directly on Instagram or WhatsApp to order.</div>
+      <form id="reserveForm" class="reserve-card">
+        <div class="field">
+          <label for="resName" data-i18n="order.form.name">Full name</label>
+          <input type="text" id="resName" name="resName" required>
+        </div>
+        <div class="field">
+          <label for="resPhone" data-i18n="order.form.phone">Phone / WhatsApp number</label>
+          <input type="tel" id="resPhone" name="resPhone" required>
+        </div>
+        <div class="field field-row">
+          <div>
+            <label for="resDate" data-i18n="reserve.form.date">Date</label>
+            <input type="date" id="resDate" name="resDate" required>
+          </div>
+          <div>
+            <label for="resTime" data-i18n="reserve.form.time">Time</label>
+            <input type="time" id="resTime" name="resTime" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="resParty" data-i18n="reserve.form.party">Number of guests</label>
+          <input type="number" id="resParty" name="resParty" min="1" max="100" required>
+        </div>
+        <div class="field">
+          <label for="resNotes" data-i18n="order.form.notes">Notes (optional)</label>
+          <textarea id="resNotes" name="resNotes"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn" data-i18n="reserve.form.submit">Send reservation via WhatsApp</button>
+        <div id="formMsg"></div>
+      </form>
+
+      <div id="unconfiguredNotice" class="notice" style="margin-top:20px;" data-i18n="order.notconfigured" hidden>Online ordering isn't fully set up yet — please contact RiO de NARA directly on Instagram or WhatsApp to order.</div>
+    </div>
   </div>
 </main>
 
 <script src="js/i18n.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/firebase-config.js"></script>
 <script type="module" src="js/app-reserve.js"></script>
 </body>

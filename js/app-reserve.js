@@ -13,11 +13,17 @@ const firebaseConfigured = !!(FB_CFG.apiKey && String(FB_CFG.apiKey).indexOf('RE
 const whatsappConfigured = !!(WA_NUMBER && String(WA_NUMBER).indexOf('REPLACE_') !== 0);
 
 const t = function(key){ return window.RDN_t ? window.RDN_t(key) : key; };
+const normalizePhone = window.RDN_normalizePhone || function(p){ return String(p || '').replace(/[^0-9]/g, ''); };
 
 const form = document.getElementById('reserveForm');
 const submitBtn = document.getElementById('submitBtn');
 const formMsg = document.getElementById('formMsg');
 const unconfiguredNotice = document.getElementById('unconfiguredNotice');
+const resDateInput = document.getElementById('resDate');
+
+if(resDateInput){
+  resDateInput.min = new Date().toISOString().split('T')[0];
+}
 
 let db = null;
 
@@ -96,7 +102,7 @@ form.addEventListener('submit', async function(e){
       'Time: ' + time + '\n' +
       'Guests: ' + party +
       (notes ? '\nNotes: ' + notes : '');
-    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+    window.open('https://wa.me/' + normalizePhone(WA_NUMBER) + '?text=' + encodeURIComponent(msg), '_blank');
   }
 
   submitBtn.disabled = false;

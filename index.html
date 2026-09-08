@@ -5,20 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RiO de NARA — Café, Resto &amp; Lounge, Timika</title>
 <meta name="description" content="RiO de NARA is a café, resto and lounge in Timika, Papua — and a House of Creativity training Papuan entrepreneurs in coffee, music, farming and more. Home of the official Persipura Jayapura FC store.">
+<link rel="canonical" href="https://rio-de-nara.vercel.app/">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://rio-de-nara.vercel.app/">
 <meta property="og:site_name" content="RiO de NARA">
 <meta property="og:title" content="RiO de NARA — Café, Resto &amp; Lounge, Timika">
 <meta property="og:description" content="A red gate off a quiet Timika street opens onto a courtyard built for coffee, live music, and Papuan entrepreneurs learning to run their own business — one cup at a time.">
-<meta property="og:image" content="og-image.jpg">
+<meta property="og:image" content="https://rio-de-nara.vercel.app/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="RiO de NARA — Café, Resto &amp; Lounge, Timika">
 <meta name="twitter:description" content="Café, resto, lounge and House of Creativity in Timika, Papua. Official store of Persipura Jayapura FC.">
-<meta name="twitter:image" content="og-image.jpg">
+<meta name="twitter:image" content="https://rio-de-nara.vercel.app/og-image.jpg">
 
 <script type="application/ld+json">
 {
@@ -26,7 +33,8 @@
   "@type": "CafeOrCoffeeShop",
   "name": "RiO de NARA",
   "description": "Café, Resto & Lounge, and House of Creativity for Papuan small entrepreneurs.",
-  "image": "og-image.jpg",
+  "image": "https://rio-de-nara.vercel.app/og-image.jpg",
+  "url": "https://rio-de-nara.vercel.app/",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Timika",
@@ -39,511 +47,265 @@
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap');
+/* --- page-specific: hero, vision, café panels, gallery, facilities, store, visit --- */
 
-:root{
-  --ink:#171512;
-  --panel:#1e1a16;
-  --panel-2:#221d18;
-  --red:#c22a17;
-  --red-deep:#7e1a0d;
-  --gold:#eecf6a;
-  --cream:#f3ecdd;
-  --cream-dim:#cfc4ac;
-  --tile-black:#1c1815;
-  --line:rgba(238,207,106,0.22);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
-}
-body{
-  background:var(--ink);
-  color:var(--cream);
-  font-family:'Work Sans',sans-serif;
-  font-weight:400;
-  line-height:1.6;
-  overflow-x:hidden;
-}
-h1,h2,h3,h4,.display{
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  color:var(--cream);
-  letter-spacing:-0.01em;
-}
-a{color:inherit;text-decoration:none;}
-img{display:block;max-width:100%;}
-:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-
-.skip-link{
-  position:absolute; left:12px; top:-60px;
-  background:var(--gold); color:var(--ink);
-  padding:10px 16px; border-radius:2px; z-index:100;
-  font-size:0.85rem; font-weight:600;
-  transition:top .2s;
-}
-.skip-link:focus{top:12px;}
-
-.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-
-/* --- diamond tile motif, drawn from the venue's actual floor pattern --- */
-.tile-band{
-  height:34px;
-  background-image:
-    linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%),
-    linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%);
-  background-size:34px 34px;
-  background-position:0 0, 17px 17px;
-  background-color:var(--tile-black);
-}
-
-/* --- nav --- */
-header.site{
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  display:flex; align-items:center; justify-content:space-between;
-  gap:16px;
-  padding:18px 40px;
-  transition:background .35s ease, padding .35s ease;
-}
-header.site.scrolled{
-  background:rgba(23,21,18,0.92);
-  backdrop-filter:blur(6px);
-  padding:12px 40px;
-  border-bottom:1px solid var(--line);
-}
-.brandmark{display:flex;align-items:center;gap:12px;flex-shrink:0;}
-.brandmark img{height:38px;width:38px;border-radius:50%;object-fit:cover;}
-.brandmark span{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;letter-spacing:0.01em;}
-
-.header-mid{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:flex-end;flex:1;}
-nav.links{display:flex;gap:20px;font-size:0.83rem;letter-spacing:0.02em;}
-nav.links a{opacity:.82;transition:opacity .2s;white-space:nowrap;}
-nav.links a:hover,nav.links a:focus-visible{opacity:1;color:var(--gold);}
-
-.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0;}
-
-.lang-toggle{
-  display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
-  font-size:0.72rem; letter-spacing:0.03em;
-}
-.lang-toggle button{
-  background:transparent; border:0; color:var(--cream-dim);
-  padding:7px 12px; cursor:pointer; font-family:inherit; font-size:inherit;
-}
-.lang-toggle button.active{background:var(--gold); color:var(--ink); font-weight:600;}
-
-.btn-sm{
-  display:inline-block; padding:9px 16px; font-size:0.78rem; letter-spacing:0.02em;
-  border-radius:2px; white-space:nowrap;
-}
-.btn-sm.solid{background:var(--red); color:var(--cream);}
-.btn-sm.solid:hover{background:var(--red-deep);}
-.btn-sm.ghost{border:1px solid rgba(243,236,221,0.4); color:var(--cream);}
-.btn-sm.ghost:hover{border-color:var(--gold); color:var(--gold);}
-
-.nav-toggle{
-  display:none;
-  width:40px;height:40px;
-  background:transparent;border:1px solid var(--line);
-  border-radius:2px;
-  cursor:pointer;
-  position:relative;
-  z-index:60;
-  flex-shrink:0;
-}
-.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{
-  content:'';
-  position:absolute;left:9px;right:9px;height:2px;background:var(--cream);
-  transition:transform .25s ease, opacity .25s ease;
-}
-.nav-toggle span{top:19px;}
-.nav-toggle span::before{top:-7px;}
-.nav-toggle span::after{top:7px;}
-.nav-toggle[aria-expanded="true"] span{background:transparent;}
-.nav-toggle[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg);}
-.nav-toggle[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg);}
-
-.mobile-menu{
-  display:none;
-}
-
-/* --- hero --- */
+/* hero */
 .hero{
-  position:relative;
-  height:100vh;
-  min-height:640px;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
+  position:relative; height:100vh; min-height:640px;
+  display:flex; align-items:flex-end; overflow:hidden;
 }
+.hero .frame{position:absolute; inset:0; overflow:hidden;}
 .hero img.bg{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   filter:saturate(1.05);
+  animation:heroKen 26s ease-in-out infinite alternate;
 }
+@keyframes heroKen{ from{transform:scale(1);} to{transform:scale(1.06);} }
 .hero::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(15,13,11,0.18) 0%, rgba(15,13,11,0.4) 45%, rgba(10,9,8,0.96) 100%);
+}
+.hero-content{position:relative; z-index:2; padding:0 40px 76px; width:100%;}
+.hero-scrim{
+  position:relative;
+  padding:26px 26px 8px;
+  margin:0 -26px;
+  border-radius:6px;
+}
+.hero-scrim::before{
   content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(15,13,11,0.15) 0%, rgba(15,13,11,0.35) 45%, rgba(12,10,9,0.94) 100%);
+  position:absolute; inset:-10% -12% -6%;
+  background:radial-gradient(120% 140% at 0% 100%, rgba(10,9,7,0.72) 0%, rgba(10,9,7,0.34) 55%, transparent 80%);
+  z-index:-1; border-radius:inherit;
 }
-.hero-content{
-  position:relative; z-index:2;
-  padding:0 40px 70px;
-  width:100%;
-}
-.hero-eyebrow{
-  font-size:0.82rem;
-  color:var(--gold);
-  letter-spacing:0.06em;
-  margin-bottom:18px;
-  font-family:'Work Sans',sans-serif;
-}
-.hero h1{
-  font-size:clamp(3.2rem, 9vw, 7.2rem);
-  line-height:0.92;
-  color:var(--cream);
-  max-width:900px;
-}
-.hero h1 em{
-  font-style:italic;
-  font-weight:500;
-  color:var(--gold);
-}
-.hero-sub{
-  margin-top:22px;
-  max-width:480px;
-  font-size:1.05rem;
-  color:var(--cream-dim);
-}
-.hero-row{
-  margin-top:40px;
-  display:flex;
-  align-items:center;
-  gap:22px;
-  flex-wrap:wrap;
-}
-.btn{
-  display:inline-block;
-  padding:15px 30px;
-  background:var(--red);
-  color:var(--cream);
-  font-size:0.92rem;
-  letter-spacing:0.02em;
-  border-radius:2px;
-  transition:background .2s;
-}
-.btn:hover{background:var(--red-deep);}
-.btn.ghost{
-  background:transparent;
-  border:1px solid rgba(243,236,221,0.4);
-}
-.btn.ghost:hover{border-color:var(--gold); color:var(--gold);}
-.hero-loc{font-size:0.85rem;color:var(--cream-dim);}
+.hero-eyebrow{font-size:0.82rem; color:var(--gold); letter-spacing:0.08em; margin-bottom:18px; text-transform:uppercase;}
+.hero h1{font-size:clamp(3.1rem, 9vw, 7.2rem); line-height:0.92; color:var(--cream); max-width:900px; letter-spacing:-0.02em;}
+.hero h1 em{font-style:italic; font-weight:500; color:var(--gold);}
+.hero-sub{margin-top:22px; max-width:480px; font-size:1.05rem; color:var(--cream-dim);}
+.hero-row{margin-top:38px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+.hero-loc{font-size:0.85rem; color:var(--cream-dim);}
+.hero-secondary{font-size:0.9rem; color:var(--cream-dim); border-bottom:1px solid rgba(243,236,221,0.35); padding-bottom:2px;}
+.hero-secondary:hover{color:var(--gold); border-color:var(--gold);}
 
-/* --- section skeleton --- */
-section{padding:110px 0;}
-.section-head{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  margin-bottom:64px;
-  align-items:end;
-}
-.section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem); line-height:1.05;}
-.section-head p{color:var(--cream-dim); font-size:1.02rem; max-width:440px;}
-.kicker{
-  font-size:0.82rem; color:var(--gold); letter-spacing:0.04em; margin-bottom:14px;
+@media (max-width:640px){
+  .hero{align-items:flex-end;}
+  .hero-content{padding:0 20px 54px;}
+  .hero-eyebrow{margin-bottom:12px;font-size:0.74rem;}
+  .hero-sub{margin-top:14px;font-size:0.96rem;}
+  .hero-row{margin-top:26px;gap:16px;}
+  .hero-secondary{font-size:0.84rem;}
 }
 
-/* --- vision / intro --- */
+/* vision */
 .intro{background:var(--panel);}
-.intro-grid{
-  display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:70px;
-  align-items:center;
-}
+.intro-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:center;}
 .intro-text h2{font-size:clamp(2rem,4vw,2.9rem); line-height:1.15; font-weight:600;}
 .intro-text p{margin-top:24px; color:var(--cream-dim); font-size:1.05rem; max-width:520px;}
-.tagline-block{
-  margin-top:38px;
-  padding-left:24px;
-  border-left:3px solid var(--red);
-}
-.tagline-block .id{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--gold);}
-.tagline-block .en{font-size:0.9rem;color:var(--cream-dim);margin-top:6px;}
-.intro-figure{
-  position:relative;
-  border-radius:2px;
-  overflow:hidden;
-}
-.intro-figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;}
+.tagline-block{margin-top:38px; padding-left:24px; border-left:3px solid var(--red);}
+.tagline-block .id{font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; color:var(--gold);}
+.tagline-block .en{font-size:0.9rem; color:var(--cream-dim); margin-top:6px;}
+.intro-figure{position:relative; border-radius:4px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow);}
+.intro-figure img{width:100%; height:100%; object-fit:cover; aspect-ratio:4/5;}
 
-/* --- what it is / cafe --- */
+/* café & resto */
 .about{background:var(--ink);}
-.about-list{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
+.about-list{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
 .about-item{
-  background:var(--ink);
-  padding:38px 34px;
+  background:var(--panel); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
-.about-item h3{font-size:1.25rem;font-weight:600;margin-bottom:12px;}
-.about-item p{color:var(--cream-dim); font-size:0.94rem;}
-.about-item .mark{font-family:'Fraunces',serif;font-style:italic;color:var(--red);font-size:1.6rem;display:block;margin-bottom:16px;}
+.about-item:hover{border-color:var(--gold); transform:translateY(-4px); box-shadow:var(--shadow);}
+.about-item .thumb{aspect-ratio:16/10; overflow:hidden;}
+.about-item .thumb img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.about-item:hover .thumb img{transform:scale(1.05);}
+.about-item .body{padding:26px 26px 30px;}
+.about-item h3{font-size:1.2rem; font-weight:600; margin-bottom:10px;}
+.about-item p{color:var(--cream-dim); font-size:0.92rem;}
+.about-item .mark{
+  font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:0.85rem;
+  letter-spacing:0.05em; display:block; margin-bottom:10px;
+}
 
-.menu-note{
-  margin-top:40px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px 10px;
-  align-items:center;
-}
-.menu-note span.lbl{font-size:0.8rem; letter-spacing:0.04em; color:var(--cream-dim); margin-right:6px;}
+.menu-note{margin-top:44px; display:flex; flex-wrap:wrap; gap:12px 10px; align-items:center;}
+.menu-note span.lbl{font-size:0.78rem; letter-spacing:0.08em; color:var(--cream-dim); margin-right:6px; text-transform:uppercase;}
 .menu-pill{
-  border:1px solid var(--line);
-  padding:9px 18px;
-  font-size:0.85rem;
-  color:var(--cream-dim);
-  border-radius:999px;
+  border:1px solid var(--line); padding:9px 18px; font-size:0.85rem; color:var(--cream-dim);
+  border-radius:999px; background:var(--panel-2); transition:border-color .2s, color .2s;
 }
+.menu-pill:hover{border-color:var(--gold); color:var(--cream);}
 .cafe-cta{
-  display:inline-block; margin-top:30px;
-  color:var(--gold); font-size:0.95rem; font-weight:500;
-  border-bottom:1px solid transparent;
+  display:inline-flex; align-items:center; gap:8px; margin-top:32px;
+  color:var(--ink); background:var(--gold); font-size:0.9rem; font-weight:600;
+  padding:13px 24px; border-radius:2px; transition:background .2s, transform .18s;
 }
-.cafe-cta:hover{border-bottom-color:var(--gold);}
+.cafe-cta:hover{background:#f5db8c; transform:translateY(-2px);}
 
-/* --- gallery / venue --- */
+/* venue gallery + facilities */
 .venue{background:var(--panel-2);}
-.venue-grid{
-  display:grid;
-  grid-template-columns:1.3fr 1fr 1fr;
-  grid-template-rows:auto auto;
-  gap:14px;
+.venue-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; grid-template-rows:auto auto; gap:14px;}
+.venue-grid figure{
+  overflow:hidden; position:relative; border-radius:4px; cursor:zoom-in;
+  border:1px solid var(--line); background:none;
 }
-.venue-grid figure{overflow:hidden; position:relative; border-radius:2px;}
-.venue-grid figure img{width:100%;height:100%;object-fit:cover;}
-.v1{grid-row:span 2;aspect-ratio:auto;}
-.v1 img{aspect-ratio:4/5.4;}
-.v2 img,.v3 img,.v4 img,.v5 img{aspect-ratio:4/3;}
+.venue-grid figure img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+.venue-grid figure:hover img{transform:scale(1.06);}
+.v1{grid-row:span 2; aspect-ratio:auto;}
+.v1 img{aspect-ratio:4/5.4; object-position:center 30%;}
+.v2 img,.v3 img,.v4 img,.v5 img{aspect-ratio:4/3; object-position:center 42%;}
 figcaption{
-  position:absolute; left:0; bottom:0; right:0;
-  padding:14px 18px;
-  font-size:0.78rem; letter-spacing:0.03em;
-  color:var(--cream);
-  background:linear-gradient(0deg, rgba(10,9,8,0.75), transparent);
+  position:absolute; left:0; bottom:0; right:0; padding:16px 18px 14px;
+  font-size:0.78rem; letter-spacing:0.03em; color:var(--cream);
+  background:linear-gradient(0deg, rgba(8,7,6,0.85), transparent 70%);
+  opacity:0.88; transition:opacity .25s ease;
 }
+.venue-grid figure:hover figcaption{opacity:1;}
 
-.facility-grid{
-  margin-top:60px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-}
+.facility-grid{margin-top:60px; display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
 .facility-cell{
-  background:var(--panel-2);
-  padding:26px 22px;
+  background:var(--panel); border:1px solid var(--line); border-top:2px solid var(--red);
+  padding:24px 22px 26px; border-radius:2px; position:relative;
+  transition:border-color .25s ease, transform .2s ease;
 }
-.facility-cell h4{font-size:1.02rem;font-weight:600;}
-.facility-cell p{font-size:0.85rem;color:var(--cream-dim);margin-top:8px;}
+.facility-cell:hover{border-color:var(--gold); border-top-color:var(--red); transform:translateY(-3px);}
+.facility-cell .idx{
+  font-family:'Fraunces',serif; font-style:italic; color:var(--gold);
+  font-size:0.85rem; display:block; margin-bottom:12px;
+}
+.facility-cell h4{font-size:1.02rem; font-weight:600;}
+.facility-cell p{font-size:0.85rem; color:var(--cream-dim); margin-top:8px;}
 
-/* --- programs (band, agribusiness, tour & travel, teamwork) --- */
+/* lightbox */
+.lightbox{
+  position:fixed; inset:0; z-index:200; background:rgba(8,7,6,0.94);
+  display:flex; align-items:center; justify-content:center; padding:40px;
+  opacity:0; pointer-events:none; transition:opacity .25s ease;
+}
+.lightbox.open{opacity:1; pointer-events:auto;}
+.lightbox img{max-width:100%; max-height:100%; border-radius:4px; box-shadow:var(--shadow);}
+.lightbox-close{
+  position:absolute; top:24px; right:28px; width:44px; height:44px;
+  border:1px solid var(--line); background:rgba(20,17,14,0.7); color:var(--cream);
+  border-radius:50%; font-size:1.3rem; cursor:pointer; line-height:1;
+}
+.lightbox-close:hover{border-color:var(--gold); color:var(--gold);}
+
+/* programs */
 .programs{background:var(--ink);}
-.program-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
+.program-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
 .program-card{
-  border:1px solid var(--line);
-  padding:30px 26px;
-  border-radius:2px;
-  background:var(--panel);
+  border:1px solid var(--line); border-top:2px solid var(--red);
+  padding:30px 26px; border-radius:2px; background:var(--panel);
+  transition:border-color .25s ease, transform .2s ease, box-shadow .2s ease;
 }
-.program-card .mark{font-family:'Fraunces',serif;font-style:italic;color:var(--red);font-size:1.4rem;display:block;margin-bottom:14px;}
-.program-card h3{font-size:1.12rem;font-weight:600;}
-.program-card p{margin-top:10px;font-size:0.88rem;color:var(--cream-dim);}
+.program-card:hover{border-color:var(--gold); border-top-color:var(--red); transform:translateY(-4px); box-shadow:var(--shadow);}
+.program-card .mark{font-family:'Fraunces',serif; font-style:italic; color:var(--red); font-size:1.4rem; display:block; margin-bottom:14px;}
+.program-card h3{font-size:1.12rem; font-weight:600;}
+.program-card p{margin-top:10px; font-size:0.88rem; color:var(--cream-dim);}
 .program-card .soon{
-  display:inline-block;margin-top:14px;font-size:0.7rem;letter-spacing:0.06em;
+  display:inline-block; margin-top:14px; font-size:0.7rem; letter-spacing:0.06em;
   color:var(--gold); border:1px solid var(--line); padding:4px 10px; border-radius:999px;
 }
 
-/* --- store --- */
+/* store */
 .store{background:var(--panel);}
-.store-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:center;
-}
+.store-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
 .store-text h2{font-size:clamp(2rem,4vw,2.7rem); font-weight:600; line-height:1.15;}
-.store-text p{margin-top:20px;color:var(--cream-dim);font-size:1.02rem;max-width:480px;}
+.store-text p{margin-top:20px; color:var(--cream-dim); font-size:1.02rem; max-width:480px;}
 .store-list{margin-top:26px; display:flex; flex-wrap:wrap; gap:10px;}
-.store-list span{
-  border:1px solid var(--line); padding:8px 16px; border-radius:999px;
-  font-size:0.82rem; color:var(--cream-dim);
-}
+.store-list span{border:1px solid var(--line); padding:8px 16px; border-radius:999px; font-size:0.82rem; color:var(--cream-dim);}
 .store-badge{
-  display:inline-flex; align-items:center; gap:10px;
-  margin-top:28px; padding:12px 20px;
-  border:1px solid var(--gold); border-radius:999px;
-  font-size:0.82rem; color:var(--gold); letter-spacing:0.02em;
+  display:inline-flex; align-items:center; gap:10px; margin-top:28px; padding:12px 20px;
+  border:1px solid var(--gold); border-radius:999px; font-size:0.82rem; color:var(--gold); letter-spacing:0.02em;
 }
-.store-visual{
-  border:1px solid var(--line);
-  border-radius:2px;
-  padding:44px 34px;
-  background:var(--panel-2);
+.store-visual{position:relative; border-radius:4px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); aspect-ratio:4/5;}
+.store-visual img{width:100%; height:100%; object-fit:cover;}
+.store-visual::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(8,7,6,0.9) 0%, rgba(8,7,6,0.15) 55%, transparent 75%);
 }
-.store-visual .crest{
-  font-family:'Fraunces',serif; font-weight:900; font-size:2.6rem; color:var(--red);
+.store-visual .tag{
+  position:absolute; left:22px; right:22px; bottom:22px; z-index:2;
 }
-.store-visual .crest-sub{font-size:0.85rem;color:var(--cream-dim);margin-top:6px;}
-.store-visual ul{margin-top:26px; list-style:none;}
+.store-visual .tag .crest-sub{font-size:0.8rem; color:var(--gold); letter-spacing:0.04em; margin-bottom:10px;}
+.store-visual ul{list-style:none;}
 .store-visual li{
-  padding:12px 0; border-top:1px solid var(--line);
-  font-size:0.92rem; color:var(--cream-dim);
-  display:flex; justify-content:space-between;
+  padding:9px 0; border-top:1px solid rgba(243,236,221,0.16);
+  font-size:0.88rem; color:var(--cream); display:flex; justify-content:space-between;
 }
-.store-visual li:last-child{border-bottom:1px solid var(--line);}
 
-/* --- community learning --- */
+/* community learning */
 .learn{background:var(--panel-2);}
-.learn-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-}
+.learn-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
 .learn-cell{
-  background:var(--panel-2);
-  padding:30px 24px;
-  min-height:150px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  background:var(--panel); border:1px solid var(--line); border-top:2px solid var(--red);
+  padding:26px 22px; min-height:150px; border-radius:2px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition:border-color .25s ease, transform .2s ease;
 }
-.learn-cell h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.08rem;}
-.learn-cell span{font-size:0.78rem;color:var(--cream-dim); margin-top:10px;}
+.learn-cell:hover{border-color:var(--gold); border-top-color:var(--red); transform:translateY(-3px);}
+.learn-cell .idx{font-size:0.72rem; color:var(--gold); letter-spacing:0.06em; margin-bottom:10px;}
+.learn-cell h4{font-family:'Fraunces',serif; font-weight:600; font-size:1.06rem;}
+.learn-cell span.sub{font-size:0.78rem; color:var(--cream-dim); margin-top:10px;}
 
-/* --- partners --- */
+/* partners */
 .partners{background:var(--ink);}
-.partner-strip{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px 10px;
-}
+.partner-strip{display:flex; flex-wrap:wrap; gap:12px;}
 .partner-pill{
-  border:1px solid var(--line);
-  padding:14px 24px;
-  font-size:0.92rem;
-  color:var(--cream-dim);
-  border-radius:999px;
+  border:1px solid var(--line); padding:14px 24px; font-size:0.92rem; color:var(--cream-dim);
+  border-radius:999px; transition:border-color .2s;
 }
+.partner-pill:hover{border-color:var(--gold);}
+.partner-pill.featured{border-color:var(--gold); background:rgba(238,207,106,0.06);}
 .partner-pill strong{color:var(--cream); font-weight:600;}
 
-/* --- visit / footer --- */
-.visit{
-  background:var(--red);
-  color:var(--cream);
-  padding:100px 0 0;
+/* visit */
+.visit{background:var(--red); color:var(--cream); padding:100px 0 0; position:relative; overflow:hidden;}
+.visit::before{
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
+  background-image:radial-gradient(circle, #000 1px, transparent 1px); background-size:5px 5px;
+}
+.visit h2{font-size:clamp(2.4rem,6vw,4.4rem); color:#fff; max-width:760px; line-height:1.02; position:relative;}
+.visit-cta{margin-top:28px; position:relative;}
+.visit-facts{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:30px;
+  margin-top:56px; padding-top:40px; border-top:1px solid rgba(255,255,255,0.25);
   position:relative;
 }
-.visit h2{font-size:clamp(2.4rem,6vw,4.4rem); color:#fff; max-width:760px; line-height:1.02;}
-.visit-cta{margin-top:26px;}
-.visit-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  margin-top:50px;
-}
-.visit-col h5{font-size:0.8rem; letter-spacing:0.04em; color:rgba(255,255,255,0.7); margin-bottom:10px;}
-.visit-col p, .visit-col a{font-size:1.05rem; color:#fff;}
-.visit-col a:hover{text-decoration:underline;}
+.visit-facts .fact h5{font-size:0.76rem; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:10px; text-transform:uppercase;}
+.visit-facts .fact p, .visit-facts .fact a{font-size:1.02rem; color:#fff; line-height:1.5;}
+.visit-facts .fact a:hover{text-decoration:underline;}
 
-.map-wrap{
-  margin-top:50px;
-  border:1px solid rgba(255,255,255,0.25);
-  border-radius:2px;
-  overflow:hidden;
-  aspect-ratio:16/7;
-  background:var(--red-deep);
+.map-frame{
+  margin-top:50px; padding:10px; background:rgba(0,0,0,0.18);
+  border:1px solid rgba(255,255,255,0.3); border-radius:6px; position:relative;
 }
-.map-wrap iframe{width:100%;height:100%;border:0;display:block;}
-.map-note{
-  padding-top:50px;
-  padding-bottom:70px;
-  font-size:0.85rem;
-  color:rgba(255,255,255,0.75);
-  border-bottom:1px solid rgba(255,255,255,0.25);
-}
+.map-wrap{border-radius:2px; overflow:hidden; aspect-ratio:16/7; background:var(--red-deep);}
+.map-wrap iframe{width:100%; height:100%; border:0; display:block;}
+.map-note{padding-top:20px; padding-bottom:70px; font-size:0.85rem; color:rgba(255,255,255,0.75); position:relative;}
 .map-note a{text-decoration:underline;}
 
-footer.site{
-  background:var(--red-deep);
-  padding:26px 0;
-}
+footer.site{background:var(--red-deep); padding:26px 0;}
 .footer-row{
   display:flex; justify-content:space-between; align-items:center;
-  font-size:0.8rem; color:rgba(255,255,255,0.75);
-  flex-wrap:wrap; gap:10px;
-}
-
-@media (max-width:1180px){
-  nav.links{gap:14px; font-size:0.78rem;}
-  .header-mid{gap:16px;}
+  font-size:0.8rem; color:rgba(255,255,255,0.75); flex-wrap:wrap; gap:10px;
 }
 
 @media (max-width:980px){
   .facility-grid{grid-template-columns:1fr 1fr;}
   .program-grid{grid-template-columns:1fr 1fr;}
   .store-grid{grid-template-columns:1fr;}
-  .store-visual{order:-1;}
+  .store-visual{order:-1; aspect-ratio:16/10;}
+  .visit-facts{grid-template-columns:1fr 1fr;}
 }
 
 @media (max-width:860px){
-  nav.links{display:none;}
-  .header-actions .btn-sm{display:none;}
-  .nav-toggle{display:block;}
-  .mobile-menu{
-    display:block;
-    position:fixed; inset:0; z-index:55;
-    background:rgba(20,17,14,0.98);
-    padding:110px 40px 40px;
-    transform:translateY(-100%);
-    transition:transform .3s ease;
-    overflow-y:auto;
-  }
-  .mobile-menu.open{transform:translateY(0);}
-  .mobile-menu a{
-    display:block; padding:14px 0; font-size:1.2rem;
-    border-bottom:1px solid var(--line);
-    font-family:'Fraunces',serif;
-  }
-  .mobile-menu .mobile-cta{display:flex; gap:12px; margin:22px 0 4px;}
-  .mobile-menu .mobile-cta .btn-sm{flex:1; text-align:center; font-size:0.85rem; padding:14px;}
-  .section-head{grid-template-columns:1fr; gap:20px;}
-  .intro-grid{grid-template-columns:1fr;}
-  .intro-figure{order:-1;}
   .about-list{grid-template-columns:1fr;}
   .venue-grid{grid-template-columns:1fr 1fr;}
   .v1{grid-row:auto;}
   .facility-grid{grid-template-columns:1fr;}
   .program-grid{grid-template-columns:1fr;}
   .learn-grid{grid-template-columns:1fr 1fr;}
-  .visit-grid{grid-template-columns:1fr;}
-  header.site{padding:16px 20px;}
-  .wrap{padding:0 20px;}
+  .visit-facts{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -553,7 +315,7 @@ footer.site{
 
 <header class="site" id="siteHeader">
   <div class="brandmark">
-    <img src="images/logo.webp" width="38" height="38" alt="RiO de NARA logo — a canoe of paddlers">
+    <img src="images/logo.webp" width="36" height="36" alt="RiO de NARA logo — a canoe of paddlers">
     <span>RiO de NARA</span>
   </div>
 
@@ -562,9 +324,9 @@ footer.site{
       <a href="#vision" data-i18n="nav.vision">Vision</a>
       <a href="#cafe" data-i18n="nav.cafe">Café &amp; Resto</a>
       <a href="#venue" data-i18n="nav.venue">Venue</a>
-      <a href="#programs" data-i18n="nav.programs">Programs</a>
       <a href="#store" data-i18n="nav.store">Store</a>
       <a href="#learning" data-i18n="nav.community">Community</a>
+      <a href="order.html" data-i18n="nav.order">Order Online</a>
       <a href="#visit" data-i18n="nav.visit">Visit</a>
     </nav>
     <div class="header-actions">
@@ -572,7 +334,6 @@ footer.site{
         <button type="button" class="lang-btn" data-lang="en">EN</button>
         <button type="button" class="lang-btn" data-lang="id">ID</button>
       </div>
-      <a href="order.html" class="btn-sm ghost" data-i18n="nav.order">Order Online</a>
       <a href="reserve.html" class="btn-sm solid" data-i18n="nav.reserve">Reserve a Table</a>
     </div>
   </div>
@@ -583,9 +344,10 @@ footer.site{
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+  <div class="drawer-tiles"></div>
   <div class="mobile-cta">
-    <a href="order.html" class="btn-sm solid" data-i18n="nav.order">Order Online</a>
-    <a href="reserve.html" class="btn-sm ghost" data-i18n="nav.reserve">Reserve a Table</a>
+    <a href="reserve.html" class="btn-sm solid" data-i18n="nav.reserve">Reserve a Table</a>
+    <a href="order.html" class="btn-sm ghost" data-i18n="nav.order">Order Online</a>
   </div>
   <a href="#vision" data-i18n="nav.vision">Vision</a>
   <a href="#cafe" data-i18n="nav.cafe">Café &amp; Resto</a>
@@ -595,7 +357,7 @@ footer.site{
   <a href="#learning" data-i18n="nav.community">Community</a>
   <a href="#partners" data-i18n="nav.partners">Partners</a>
   <a href="#visit" data-i18n="nav.visit">Visit</a>
-  <div class="lang-toggle" role="group" aria-label="Language / Bahasa" style="margin-top:26px;width:fit-content;">
+  <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
     <button type="button" class="lang-btn" data-lang="en">EN</button>
     <button type="button" class="lang-btn" data-lang="id">ID</button>
   </div>
@@ -604,22 +366,26 @@ footer.site{
 <main id="main">
 
 <section class="hero">
-  <img class="bg" src="images/hero-gate.webp" alt="The red gate of RiO de NARA, lit at dusk, opening onto its courtyard" fetchpriority="high" loading="eager" decoding="async">
+  <div class="frame">
+    <img class="bg" src="images/hero-gate.webp" alt="The red gate of RiO de NARA, lit at dusk, opening onto its courtyard" fetchpriority="high" loading="eager" decoding="async">
+  </div>
   <div class="hero-content wrap">
-    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Timika, Papua — Café · Resto · Lounge</div>
-    <h1>RiO de <em>NARA</em></h1>
-    <p class="hero-sub" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
-    <div class="hero-row">
-      <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
-      <a href="#visit" class="btn ghost" data-i18n="hero.btnVisit">Plan your visit</a>
-      <span class="hero-loc" data-i18n="hero.loc">Open daily &nbsp;·&nbsp; Timika, Papua, Indonesia</span>
+    <div class="hero-scrim">
+      <div class="hero-eyebrow" data-i18n="hero.eyebrow">Timika, Papua — Café · Resto · Lounge</div>
+      <h1>RiO de <em>NARA</em></h1>
+      <p class="hero-sub" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
+      <div class="hero-row">
+        <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
+        <a href="#visit" class="hero-secondary" data-i18n="hero.btnVisit">Plan your visit</a>
+        <span class="hero-loc" data-i18n="hero.loc">Open daily &nbsp;·&nbsp; Timika, Papua, Indonesia</span>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="tile-band"></div>
 
-<section class="intro" id="vision">
+<section class="intro reveal" id="vision">
   <div class="wrap intro-grid">
     <div class="intro-text">
       <div class="kicker" data-i18n="vision.kicker">Vision &amp; Mission</div>
@@ -636,7 +402,7 @@ footer.site{
   </div>
 </section>
 
-<section class="about" id="cafe">
+<section class="about reveal" id="cafe">
   <div class="wrap">
     <div class="section-head">
       <h2 data-i18n="cafe.h2">Café &amp; Resto</h2>
@@ -644,19 +410,28 @@ footer.site{
     </div>
     <div class="about-list">
       <div class="about-item">
-        <span class="mark">01</span>
-        <h3 data-i18n="cafe.item1.h3">Coffee &amp; bar</h3>
-        <p data-i18n="cafe.item1.p">Papuan-grown coffee, hand-poured by baristas trained on site, alongside tea, mocktails, and a full bar for the evening crowd.</p>
+        <div class="thumb"><img src="images/venue-courtyard.webp" alt="Coffee bar area in the dining courtyard" loading="lazy" decoding="async"></div>
+        <div class="body">
+          <span class="mark">01</span>
+          <h3 data-i18n="cafe.item1.h3">Coffee &amp; bar</h3>
+          <p data-i18n="cafe.item1.p">Papuan-grown coffee, hand-poured by baristas trained on site, alongside tea, mocktails, and a full bar for the evening crowd.</p>
+        </div>
       </div>
       <div class="about-item">
-        <span class="mark">02</span>
-        <h3 data-i18n="cafe.item2.h3">Resto &amp; shared plates</h3>
-        <p data-i18n="cafe.item2.p">A kitchen built around cold storage and volume, serving everyday plates through to catering for the venue's own events.</p>
+        <div class="thumb"><img src="images/venue-event.webp" alt="Tables set for dining and catered events" loading="lazy" decoding="async"></div>
+        <div class="body">
+          <span class="mark">02</span>
+          <h3 data-i18n="cafe.item2.h3">Resto &amp; shared plates</h3>
+          <p data-i18n="cafe.item2.p">A kitchen built around cold storage and volume, serving everyday plates through to catering for the venue's own events.</p>
+        </div>
       </div>
       <div class="about-item">
-        <span class="mark">03</span>
-        <h3 data-i18n="cafe.item3.h3">Music &amp; lounge</h3>
-        <p data-i18n="cafe.item3.p">Live sets from the RiO de NARA Band and guest acts, a red-carpet stage for launches, and a courtyard that turns into a lounge after dark.</p>
+        <div class="thumb"><img src="images/venue-stage.webp" alt="Live music on the RiO de NARA stage" loading="lazy" decoding="async"></div>
+        <div class="body">
+          <span class="mark">03</span>
+          <h3 data-i18n="cafe.item3.h3">Music &amp; lounge</h3>
+          <p data-i18n="cafe.item3.p">Live sets from the RiO de NARA Band and guest acts, a red-carpet stage for launches, and a courtyard that turns into a lounge after dark.</p>
+        </div>
       </div>
     </div>
     <div class="menu-note">
@@ -671,30 +446,30 @@ footer.site{
   </div>
 </section>
 
-<section class="venue" id="venue">
+<section class="venue reveal" id="venue">
   <div class="wrap">
     <div class="section-head">
       <h2 data-i18n="venue.h2">The venue</h2>
       <p data-i18n="venue.p">A torii-framed gate, red-and-black diamond tile underfoot, and a courtyard that scales from a quiet coffee to a full event with staging and a red carpet.</p>
     </div>
-    <div class="venue-grid">
-      <figure class="v1">
+    <div class="venue-grid" id="venueGallery">
+      <figure class="v1" data-full="images/venue-street.webp">
         <img src="images/venue-street.webp" width="825" height="1100" alt="RiO de NARA's red gate seen from the street at dusk" loading="lazy" decoding="async">
         <figcaption data-i18n="venue.caption1">The gate, from the street</figcaption>
       </figure>
-      <figure class="v2">
+      <figure class="v2" data-full="images/venue-courtyard.webp">
         <img src="images/venue-courtyard.webp" width="750" height="1000" alt="Dining courtyard with wooden tables, rattan chairs and hanging red lanterns" loading="lazy" decoding="async">
         <figcaption data-i18n="venue.caption2">Dining courtyard</figcaption>
       </figure>
-      <figure class="v3">
+      <figure class="v3" data-full="images/venue-stage.webp">
         <img src="images/venue-stage.webp" width="750" height="1000" alt="A guitarist performing on the RiO de NARA stage" loading="lazy" decoding="async">
         <figcaption data-i18n="venue.caption3">Live on stage</figcaption>
       </figure>
-      <figure class="v4">
+      <figure class="v4" data-full="images/venue-event.webp">
         <img src="images/venue-event.webp" width="750" height="1000" alt="Tables dressed in white and red for a private event" loading="lazy" decoding="async">
         <figcaption data-i18n="venue.caption4">Set for an event</figcaption>
       </figure>
-      <figure class="v5">
+      <figure class="v5" data-full="images/venue-alley.webp">
         <img src="images/venue-alley.webp" width="750" height="1000" alt="Close-up view of the red gate and entrance walkway" loading="lazy" decoding="async">
         <figcaption data-i18n="venue.caption5">The gate, up close</figcaption>
       </figure>
@@ -702,18 +477,22 @@ footer.site{
 
     <div class="facility-grid">
       <div class="facility-cell">
+        <span class="idx">01</span>
         <h4 data-i18n="venue.facility1.h4">Launch Room &amp; Meeting Rooms</h4>
         <p data-i18n="venue.facility1.p">Co-working space and meeting rooms with projector, whiteboard and high-speed WiFi for corporate meetings and community events.</p>
       </div>
       <div class="facility-cell">
+        <span class="idx">02</span>
         <h4 data-i18n="venue.facility2.h4">Taman Café</h4>
         <p data-i18n="venue.facility2.p">A landscaped café garden, kept and decorated for everyday visits and dressed for events.</p>
       </div>
       <div class="facility-cell">
+        <span class="idx">03</span>
         <h4 data-i18n="venue.facility3.h4">Kitchen &amp; Bar</h4>
         <p data-i18n="venue.facility3.p">A kitchen built around cold storage, and a bar handling coffee, tea, mocktails and juice.</p>
       </div>
       <div class="facility-cell">
+        <span class="idx">04</span>
         <h4 data-i18n="venue.facility4.h4">Security &amp; Parking</h4>
         <p data-i18n="venue.facility4.p">Attended parking and on-site security for guests, vehicles, and event nights.</p>
       </div>
@@ -721,7 +500,12 @@ footer.site{
   </div>
 </section>
 
-<section class="programs" id="programs">
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<section class="programs reveal" id="programs">
   <div class="wrap">
     <div class="section-head">
       <h2 data-i18n="programs.h2">Beyond the café</h2>
@@ -753,7 +537,7 @@ footer.site{
   </div>
 </section>
 
-<section class="store" id="store">
+<section class="store reveal" id="store">
   <div class="wrap store-grid">
     <div class="store-text">
       <div class="kicker" data-i18n="store.kicker">Official Store</div>
@@ -769,45 +553,47 @@ footer.site{
       <div class="store-badge" data-i18n="store.badge">★ Official Store — Persipura Jayapura FC</div>
     </div>
     <div class="store-visual">
-      <div class="crest">RdN</div>
-      <div class="crest-sub" data-i18n="store.visual.sub">Official Store · Persipura Jayapura FC</div>
-      <ul>
-        <li><span data-i18n="store.list.home">Home Jersey</span><span data-i18n="store.list.status">In store</span></li>
-        <li><span data-i18n="store.list.away">Away Jersey</span><span data-i18n="store.list.status">In store</span></li>
-        <li><span data-i18n="store.list.scarves">Scarves &amp; Caps</span><span data-i18n="store.list.status">In store</span></li>
-        <li><span data-i18n="store.list.acc">Accessories</span><span data-i18n="store.list.status">In store</span></li>
-      </ul>
+      <img src="images/venue-street.webp" alt="RiO de NARA's storefront and red gate, signage visible" loading="lazy" decoding="async">
+      <div class="tag">
+        <div class="crest-sub" data-i18n="store.visual.sub">Official Store · Persipura Jayapura FC</div>
+        <ul>
+          <li><span data-i18n="store.list.home">Home Jersey</span><span data-i18n="store.list.status">In store</span></li>
+          <li><span data-i18n="store.list.away">Away Jersey</span><span data-i18n="store.list.status">In store</span></li>
+          <li><span data-i18n="store.list.scarves">Scarves &amp; Caps</span><span data-i18n="store.list.status">In store</span></li>
+          <li><span data-i18n="store.list.acc">Accessories</span><span data-i18n="store.list.status">In store</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="learn" id="learning">
+<section class="learn reveal" id="learning">
   <div class="wrap">
     <div class="section-head">
       <h2 data-i18n="learn.h2">Community-Based Learning</h2>
       <p data-i18n="learn.p">RiO de NARA runs as a set of working programs. People train on the job, in the room, alongside the guests they're serving.</p>
     </div>
     <div class="learn-grid">
-      <div class="learn-cell"><h4 data-i18n="learn.cell1.h4">Barista</h4><span data-i18n="learn.cell1.span">Coffee craft, front of house</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell2.h4">Coffee Production</h4><span data-i18n="learn.cell2.span">From bean to cup</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell3.h4">Musical</h4><span data-i18n="learn.cell3.span">The RiO de NARA Band</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell4.h4">Movie Making</h4><span data-i18n="learn.cell4.span">Filming venue &amp; events</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell5.h4">Content Creator</h4><span data-i18n="learn.cell5.span">Telling the story online</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell6.h4">Farming</h4><span data-i18n="learn.cell6.span">RiO de NARA Agribusiness</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell7.h4">Soccer Team</h4><span data-i18n="learn.cell7.span">In step with Persipura</span></div>
-      <div class="learn-cell"><h4 data-i18n="learn.cell8.h4">Bible Study</h4><span data-i18n="learn.cell8.span">Fellowship &amp; formation</span></div>
+      <div class="learn-cell"><span class="idx">01</span><h4 data-i18n="learn.cell1.h4">Barista</h4><span class="sub" data-i18n="learn.cell1.span">Coffee craft, front of house</span></div>
+      <div class="learn-cell"><span class="idx">02</span><h4 data-i18n="learn.cell2.h4">Coffee Production</h4><span class="sub" data-i18n="learn.cell2.span">From bean to cup</span></div>
+      <div class="learn-cell"><span class="idx">03</span><h4 data-i18n="learn.cell3.h4">Musical</h4><span class="sub" data-i18n="learn.cell3.span">The RiO de NARA Band</span></div>
+      <div class="learn-cell"><span class="idx">04</span><h4 data-i18n="learn.cell4.h4">Movie Making</h4><span class="sub" data-i18n="learn.cell4.span">Filming venue &amp; events</span></div>
+      <div class="learn-cell"><span class="idx">05</span><h4 data-i18n="learn.cell5.h4">Content Creator</h4><span class="sub" data-i18n="learn.cell5.span">Telling the story online</span></div>
+      <div class="learn-cell"><span class="idx">06</span><h4 data-i18n="learn.cell6.h4">Farming</h4><span class="sub" data-i18n="learn.cell6.span">RiO de NARA Agribusiness</span></div>
+      <div class="learn-cell"><span class="idx">07</span><h4 data-i18n="learn.cell7.h4">Soccer Team</h4><span class="sub" data-i18n="learn.cell7.span">In step with Persipura</span></div>
+      <div class="learn-cell"><span class="idx">08</span><h4 data-i18n="learn.cell8.h4">Bible Study</h4><span class="sub" data-i18n="learn.cell8.span">Fellowship &amp; formation</span></div>
     </div>
   </div>
 </section>
 
-<section class="partners" id="partners">
+<section class="partners reveal" id="partners">
   <div class="wrap">
     <div class="section-head">
       <h2 data-i18n="partners.h2">Partnerships</h2>
       <p data-i18n="partners.p">RiO de NARA works alongside local brands, teams, and creative talent to build out its store, its stage, and its tech.</p>
     </div>
     <div class="partner-strip">
-      <div class="partner-pill"><strong>Persipura Jayapura</strong> — <span data-i18n="partners.official">official store</span></div>
+      <div class="partner-pill featured"><strong>Persipura Jayapura</strong> — <span data-i18n="partners.official">official store</span></div>
       <div class="partner-pill"><strong>Natsu Japanese Ice Cream</strong></div>
       <div class="partner-pill"><strong>Mekari Talent</strong></div>
       <div class="partner-pill"><strong>The Karaka's</strong></div>
@@ -817,34 +603,36 @@ footer.site{
   </div>
 </section>
 
-<section class="visit" id="visit">
+<section class="visit reveal" id="visit">
   <div class="wrap">
     <h2 data-i18n="visit.h2">Come sit under the gate.</h2>
-    <div class="visit-cta"><a href="reserve.html" class="btn" data-i18n="visit.reserveCta">Reserve a table →</a></div>
-    <div class="visit-grid">
-      <div class="visit-col">
+    <div class="visit-cta"><a href="reserve.html" class="btn on-red" data-i18n="visit.reserveCta">Reserve a table →</a></div>
+    <div class="visit-facts">
+      <div class="fact">
         <h5 data-i18n="visit.loc.label">Location</h5>
         <p data-i18n="visit.loc.value">Timika, Papua, Indonesia</p>
       </div>
-      <div class="visit-col">
+      <div class="fact">
         <h5 data-i18n="visit.hours.label">Hours</h5>
         <p data-i18n="visit.hours.value">Open daily · morning coffee through late-evening lounge</p>
       </div>
-      <div class="visit-col">
+      <div class="fact">
         <h5 data-i18n="visit.events.label">For events &amp; bookings</h5>
         <p data-i18n="visit.events.value">Meeting rooms, launch events, and full-venue bookings available — reach out via our Instagram or in person at RiO de NARA.</p>
       </div>
-      <div class="visit-col">
+      <div class="fact">
         <h5 data-i18n="visit.follow.label">Follow along</h5>
         <p><a href="https://www.instagram.com/riodenara" target="_blank" rel="noopener">@riodenara</a></p>
       </div>
     </div>
-    <div class="map-wrap">
-      <iframe
-        src="https://www.google.com/maps?q=RiO+de+NARA,+Timika,+Papua,+Indonesia&output=embed"
-        title="Map showing RiO de NARA in Timika, Papua"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-frame">
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=RiO+de+NARA,+Timika,+Papua,+Indonesia&output=embed"
+          title="Map showing RiO de NARA in Timika, Papua"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
     <p class="map-note"><span data-i18n="visit.mapnote">Look for the red gate. For exact directions, message us on Instagram —</span> <a href="https://www.instagram.com/riodenara" target="_blank" rel="noopener">@riodenara</a>.</p>
   </div>
@@ -852,6 +640,7 @@ footer.site{
 
 </main>
 
+<div class="tile-band mini"></div>
 <footer class="site">
   <div class="wrap footer-row">
     <span data-i18n="footer.left">RiO de NARA — Café, Resto &amp; Lounge, Timika, Papua</span>
@@ -860,6 +649,7 @@ footer.site{
 </footer>
 
 <script src="js/i18n.js"></script>
+<script src="js/reveal.js"></script>
 <script>
 (function(){
   var h = document.getElementById('siteHeader');
@@ -883,6 +673,24 @@ footer.site{
       document.body.style.overflow = '';
     });
   });
+
+  /* venue gallery lightbox */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+  document.querySelectorAll('#venueGallery figure').forEach(function(fig){
+    fig.addEventListener('click', function(){
+      var full = fig.getAttribute('data-full');
+      var alt = fig.querySelector('img').getAttribute('alt');
+      lightboxImg.src = full;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('open');
+    });
+  });
+  function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){ if(e.target === lightbox){ closeLightbox(); } });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeLightbox(); } });
 })();
 </script>
 
