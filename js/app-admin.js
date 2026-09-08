@@ -44,7 +44,8 @@ async function runAdmin(){
   const auth = authMod.getAuth(app);
   const db = fsMod.getFirestore(app);
 
-  const formatIDR = function(n){ return 'Rp ' + Number(n || 0).toLocaleString('id-ID'); };
+  const formatIDR = window.RDN_formatIDR || function(n){ return 'Rp ' + Number(n || 0).toLocaleString('id-ID'); };
+  const normalizePhone = window.RDN_normalizePhone || function(p){ return String(p || '').replace(/[^0-9]/g, ''); };
   const formatDate = function(ts){
     try{
       const d = ts && ts.toDate ? ts.toDate() : new Date(ts);
@@ -134,13 +135,13 @@ async function runAdmin(){
     list.innerHTML = '';
     filtered.forEach(function(o){
       const card = document.createElement('div');
-      card.className = 'card';
+      card.className = 'card is-status-' + (o.status || 'new');
 
       const top = document.createElement('div');
       top.className = 'card-top';
       const title = document.createElement('div');
       title.innerHTML = '<div class="card-title">' + escapeHtml(o.customerName || 'Guest') + '</div>' +
-        '<div class="card-meta">' + escapeHtml(o.phone || '') + (o.phone ? ' · <a href="https://wa.me/' + o.phone.replace(/[^0-9]/g,'') + '" target="_blank">WhatsApp</a>' : '') + ' · ' + formatDate(o.createdAt) + '</div>';
+        '<div class="card-meta">' + escapeHtml(o.phone || '') + (o.phone ? ' · <a class="wa-link" href="https://wa.me/' + normalizePhone(o.phone) + '" target="_blank">WhatsApp ↗</a>' : '') + ' · ' + formatDate(o.createdAt) + '</div>';
       const pill = document.createElement('span');
       pill.className = 'status-pill status-' + (o.status || 'new');
       pill.textContent = o.status || 'new';
@@ -224,13 +225,13 @@ async function runAdmin(){
     list.innerHTML = '';
     filtered.forEach(function(r){
       const card = document.createElement('div');
-      card.className = 'card';
+      card.className = 'card is-status-' + (r.status || 'pending');
 
       const top = document.createElement('div');
       top.className = 'card-top';
       const title = document.createElement('div');
       title.innerHTML = '<div class="card-title">' + escapeHtml(r.customerName || 'Guest') + '</div>' +
-        '<div class="card-meta">' + escapeHtml(r.phone || '') + (r.phone ? ' · <a href="https://wa.me/' + r.phone.replace(/[^0-9]/g,'') + '" target="_blank">WhatsApp</a>' : '') + ' · requested ' + formatDate(r.createdAt) + '</div>';
+        '<div class="card-meta">' + escapeHtml(r.phone || '') + (r.phone ? ' · <a class="wa-link" href="https://wa.me/' + normalizePhone(r.phone) + '" target="_blank">WhatsApp ↗</a>' : '') + ' · requested ' + formatDate(r.createdAt) + '</div>';
       const pill = document.createElement('span');
       pill.className = 'status-pill status-' + (r.status || 'pending');
       pill.textContent = r.status || 'pending';

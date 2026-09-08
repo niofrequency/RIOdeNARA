@@ -5,77 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order Online — RiO de NARA</title>
 <meta name="description" content="Order ahead from RiO de NARA in Timika, Papua — browse the menu, build your order, and send it straight to us on WhatsApp.">
+<link rel="canonical" href="https://rio-de-nara.vercel.app/order.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900&family=Work+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900&family=Work+Sans:wght@300;400;500;600&display=swap');
-
-:root{
-  --ink:#171512; --panel:#1e1a16; --panel-2:#221d18;
-  --red:#c22a17; --red-deep:#7e1a0d; --gold:#eecf6a;
-  --cream:#f3ecdd; --cream-dim:#cfc4ac; --line:rgba(238,207,106,0.22);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--ink);color:var(--cream);font-family:'Work Sans',sans-serif;line-height:1.6;}
-h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:700;color:var(--cream);letter-spacing:-0.01em;}
-a{color:inherit;}
-:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
-
+/* order page-specific */
 header.top{
   position:sticky; top:0; z-index:20;
   display:flex; align-items:center; justify-content:space-between;
-  padding:18px 24px; background:rgba(23,21,18,0.95); backdrop-filter:blur(6px);
+  padding:16px 24px; background:rgba(20,17,14,0.96); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
 }
-.brandmark{display:flex;align-items:center;gap:10px;}
-.brandmark img{height:32px;width:32px;border-radius:50%;object-fit:cover;}
-.brandmark span{font-family:'Fraunces',serif;font-weight:700;font-size:1rem;}
 .top-actions{display:flex;align-items:center;gap:14px;}
 .back-link{font-size:0.82rem;color:var(--cream-dim);}
 .back-link:hover{color:var(--gold);}
-.lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:0.72rem;}
-.lang-toggle button{background:transparent;border:0;color:var(--cream-dim);padding:6px 11px;cursor:pointer;font-family:inherit;font-size:inherit;}
-.lang-toggle button.active{background:var(--gold);color:var(--ink);font-weight:600;}
 
-main{padding:54px 0 120px;}
-.page-head{max-width:640px;margin-bottom:44px;}
-.kicker{font-size:0.82rem;color:var(--gold);letter-spacing:0.04em;margin-bottom:12px;}
+main{padding:48px 0 0;}
+.page-head{max-width:640px;margin-bottom:36px;}
 .page-head h1{font-size:clamp(2rem,5vw,2.9rem);line-height:1.1;}
 .page-head p{margin-top:16px;color:var(--cream-dim);font-size:1.02rem;}
 
-.notice{
-  background:var(--panel-2); border:1px solid var(--line); border-radius:4px;
-  padding:14px 18px; font-size:0.85rem; color:var(--cream-dim); margin-bottom:36px;
-}
-
-.order-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start;}
+.order-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start;padding-bottom:60px;}
 
 .menu-status{color:var(--cream-dim);font-size:0.95rem;padding:20px 0;}
 
-.menu-category{margin-bottom:38px;}
-.menu-category h2{font-size:1.3rem;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.menu-category{margin-bottom:8px;}
+.menu-category h2.category-rail{
+  position:sticky; top:65px; z-index:5;
+  background:var(--ink); padding:12px 0; margin-bottom:6px;
+  border-bottom:1px solid var(--line); font-size:1.15rem;
+}
 .menu-item{
   display:flex; align-items:center; justify-content:space-between; gap:16px;
-  padding:16px 0; border-bottom:1px solid rgba(238,207,106,0.1);
+  padding:18px 4px; border-bottom:1px solid rgba(238,207,106,0.1);
 }
 .menu-item-info h3{font-size:1.02rem;font-weight:600;font-family:'Work Sans',sans-serif;color:var(--cream);}
 .menu-item-info p{font-size:0.85rem;color:var(--cream-dim);margin-top:4px;}
-.menu-item-price{font-size:0.92rem;color:var(--gold);margin-top:4px;}
+.menu-item-price{font-size:0.92rem;color:var(--gold);margin-top:6px;font-variant-numeric:tabular-nums;}
 .menu-item-add{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .qty-stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:2px;}
 .qty-stepper button{
-  width:30px;height:30px;background:transparent;border:0;color:var(--cream);
-  font-size:1rem;cursor:pointer;
+  width:44px;height:44px;background:transparent;border:0;color:var(--cream);
+  font-size:1.1rem;cursor:pointer;
 }
 .qty-stepper button:hover{color:var(--gold);}
 .qty-stepper span{min-width:26px;text-align:center;font-size:0.9rem;}
-.add-btn{
-  padding:9px 16px;background:var(--red);color:var(--cream);border:0;border-radius:2px;
-  font-size:0.82rem;letter-spacing:0.02em;cursor:pointer;font-family:inherit;
-}
-.add-btn:hover{background:var(--red-deep);}
 
 .cart-panel{
   position:sticky; top:90px;
@@ -83,37 +63,65 @@ main{padding:54px 0 120px;}
   padding:26px 24px;
 }
 .cart-panel h2{font-size:1.15rem;margin-bottom:18px;}
+.cart-panel .sheet-handle,.cart-panel .sheet-close{display:none;}
 .cart-empty{color:var(--cream-dim);font-size:0.9rem;}
 .cart-line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(238,207,106,0.1);font-size:0.88rem;}
 .cart-line .cl-name{flex:1;}
-.cart-line .cl-remove{background:transparent;border:0;color:var(--cream-dim);cursor:pointer;font-size:1rem;line-height:1;}
+.cart-line .cl-remove{background:transparent;border:0;color:var(--cream-dim);cursor:pointer;font-size:1.1rem;line-height:1;min-height:32px;min-width:32px;}
 .cart-line .cl-remove:hover{color:var(--red);}
-.cart-total{display:flex;justify-content:space-between;font-weight:600;padding-top:14px;margin-top:6px;font-size:1.02rem;}
-
-.field{margin-top:16px;}
-.field label{display:block;font-size:0.8rem;color:var(--cream-dim);margin-bottom:6px;letter-spacing:0.02em;}
-.field input,.field textarea,.field select{
-  width:100%; padding:11px 12px; background:var(--panel-2); border:1px solid var(--line);
-  border-radius:2px; color:var(--cream); font-family:inherit; font-size:0.92rem;
-}
-.field textarea{resize:vertical;min-height:70px;}
-.radio-row{display:flex;gap:18px;margin-top:6px;}
-.radio-row label{display:flex;align-items:center;gap:6px;font-size:0.88rem;color:var(--cream);}
+.cart-total{display:flex;justify-content:space-between;font-weight:600;padding-top:14px;margin-top:6px;font-size:1.05rem;font-variant-numeric:tabular-nums;}
+#orderForm{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);}
 
 .submit-btn{
-  width:100%; margin-top:20px; padding:14px; background:var(--red); color:var(--cream);
+  width:100%; margin-top:20px; padding:15px; background:var(--red); color:var(--cream);
   border:0; border-radius:2px; font-size:0.92rem; letter-spacing:0.02em; cursor:pointer;
-  font-family:inherit;
+  font-family:inherit; min-height:48px; transition:background .2s, transform .18s;
 }
-.submit-btn:hover{background:var(--red-deep);}
-.submit-btn:disabled{opacity:0.6;cursor:default;}
-.form-msg{margin-top:14px;font-size:0.85rem;padding:10px 12px;border-radius:2px;}
-.form-msg.success{background:rgba(96,180,110,0.15);color:#8fd39f;border:1px solid rgba(96,180,110,0.35);}
-.form-msg.error{background:rgba(194,42,23,0.15);color:#f2a89a;border:1px solid rgba(194,42,23,0.35);}
+.submit-btn:hover{background:var(--red-deep); transform:translateY(-2px);}
+.submit-btn:disabled{opacity:0.6;cursor:default;transform:none;}
+
+/* mobile sticky cart bar */
+.mobile-cart-bar{
+  display:none;
+  position:fixed; left:0; right:0; bottom:0; z-index:40;
+  background:rgba(20,17,14,0.97); backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);
+  padding:14px 20px; align-items:center; justify-content:space-between; gap:14px;
+  box-shadow:0 -12px 30px rgba(0,0,0,0.35);
+}
+.mobile-cart-bar .mcb-info{font-size:0.9rem;}
+.mobile-cart-bar .mcb-info .mcb-total{color:var(--gold); font-weight:600; font-variant-numeric:tabular-nums;}
+.mobile-cart-bar .mcb-info .mcb-count{color:var(--cream-dim); font-size:0.78rem; display:block; margin-top:2px;}
+.mobile-cart-bar button{
+  background:var(--red); color:var(--cream); border:0; border-radius:2px;
+  padding:12px 20px; font-size:0.85rem; font-family:inherit; cursor:pointer; min-height:44px;
+}
+
+.cart-sheet-backdrop{
+  display:none; position:fixed; inset:0; z-index:44; background:rgba(8,7,6,0.7);
+}
+.cart-sheet-backdrop.open{display:block;}
 
 @media (max-width:800px){
-  .order-layout{grid-template-columns:1fr;}
-  .cart-panel{position:static;}
+  .order-layout{grid-template-columns:1fr; padding-bottom:20px;}
+  .category-rail{top:57px;}
+  .mobile-cart-bar{display:flex;}
+  .cart-panel{
+    position:fixed; left:0; right:0; bottom:0; top:auto; z-index:45;
+    max-height:85vh; overflow-y:auto; border-radius:16px 16px 0 0;
+    transform:translateY(110%); transition:transform .3s ease;
+    padding:22px 22px 28px; box-shadow:0 -20px 50px rgba(0,0,0,0.5);
+  }
+  .cart-panel.open{transform:translateY(0);}
+  .cart-panel .sheet-handle{
+    display:block; width:40px; height:4px; background:var(--line); border-radius:999px;
+    margin:0 auto 18px;
+  }
+  .cart-panel .sheet-close{
+    display:block; position:absolute; top:18px; right:18px; background:transparent; border:0;
+    color:var(--cream-dim); font-size:1.4rem; cursor:pointer; min-width:36px; min-height:36px;
+  }
+  main{padding-bottom:90px;}
 }
 </style>
 </head>
@@ -121,7 +129,7 @@ main{padding:54px 0 120px;}
 
 <header class="top">
   <a href="index.html" class="brandmark">
-    <img src="images/logo.webp" alt="RiO de NARA logo">
+    <img src="images/logo.webp" width="32" height="32" alt="RiO de NARA logo">
     <span>RiO de NARA</span>
   </a>
   <div class="top-actions">
@@ -141,8 +149,8 @@ main{padding:54px 0 120px;}
       <p data-i18n="order.intro">Browse the menu, build your order, and send it straight to RiO de NARA. We'll confirm on WhatsApp.</p>
     </div>
 
-    <div id="sampleNotice" class="notice" data-i18n="order.samplenote" hidden>Sample menu shown below — ask us about today's specials when you arrive.</div>
-    <div id="unconfiguredNotice" class="notice" data-i18n="order.notconfigured" hidden>Online ordering isn't fully set up yet — please contact RiO de NARA directly on Instagram or WhatsApp to order.</div>
+    <div id="sampleNotice" class="notice" style="margin-bottom:16px;" data-i18n="order.samplenote" hidden>Sample menu shown below — ask us about today's specials when you arrive.</div>
+    <div id="unconfiguredNotice" class="notice" style="margin-bottom:16px;" data-i18n="order.notconfigured" hidden>Online ordering isn't fully set up yet — please contact RiO de NARA directly on Instagram or WhatsApp to order.</div>
 
     <div class="order-layout">
       <div id="menuColumn">
@@ -150,7 +158,9 @@ main{padding:54px 0 120px;}
         <div id="menuContainer"></div>
       </div>
 
-      <div class="cart-panel">
+      <div class="cart-panel" id="cartPanel">
+        <div class="sheet-handle"></div>
+        <button type="button" class="sheet-close" id="sheetClose" aria-label="Close cart">&times;</button>
         <h2 data-i18n="order.cart.title">Your order</h2>
         <div id="cartLines"><p class="cart-empty" data-i18n="order.cart.empty">Your cart is empty.</p></div>
         <div class="cart-total" id="cartTotalRow" hidden>
@@ -190,7 +200,17 @@ main{padding:54px 0 120px;}
   </div>
 </main>
 
+<div class="cart-sheet-backdrop" id="cartBackdrop"></div>
+<div class="mobile-cart-bar" id="mobileCartBar">
+  <div class="mcb-info">
+    <span class="mcb-total tabular" id="mcbTotal">Rp 0</span>
+    <span class="mcb-count" id="mcbCount" data-i18n="order.cart.empty">Your cart is empty.</span>
+  </div>
+  <button type="button" id="mcbReview" data-i18n="order.cart.title">Your order</button>
+</div>
+
 <script src="js/i18n.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/firebase-config.js"></script>
 <script type="module" src="js/app-order.js"></script>
 </body>

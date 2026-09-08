@@ -33,7 +33,8 @@ const firebaseConfigured = !!(FB_CFG.apiKey && String(FB_CFG.apiKey).indexOf('RE
 const whatsappConfigured = !!(WA_NUMBER && String(WA_NUMBER).indexOf('REPLACE_') !== 0);
 
 const t = function(key){ return window.RDN_t ? window.RDN_t(key) : key; };
-const formatIDR = function(n){ return 'Rp ' + Number(n || 0).toLocaleString('id-ID'); };
+const formatIDR = window.RDN_formatIDR || function(n){ return 'Rp ' + Number(n || 0).toLocaleString('id-ID'); };
+const normalizePhone = window.RDN_normalizePhone || function(p){ return String(p || '').replace(/[^0-9]/g, ''); };
 
 const menuStatus = document.getElementById('menuStatus');
 const menuContainer = document.getElementById('menuContainer');
@@ -46,9 +47,33 @@ const form = document.getElementById('orderForm');
 const submitBtn = document.getElementById('submitBtn');
 const formMsg = document.getElementById('formMsg');
 
+const cartPanel = document.getElementById('cartPanel');
+const cartBackdrop = document.getElementById('cartBackdrop');
+const sheetClose = document.getElementById('sheetClose');
+const mobileCartBar = document.getElementById('mobileCartBar');
+const mcbTotal = document.getElementById('mcbTotal');
+const mcbCount = document.getElementById('mcbCount');
+const mcbReview = document.getElementById('mcbReview');
+
 let db = null;
 let currentItems = [];
 const cart = new Map();
+
+function openCartSheet(){
+  if(!cartPanel) return;
+  cartPanel.classList.add('open');
+  cartBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCartSheet(){
+  if(!cartPanel) return;
+  cartPanel.classList.remove('open');
+  cartBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+if(mcbReview){ mcbReview.addEventListener('click', openCartSheet); }
+if(sheetClose){ sheetClose.addEventListener('click', closeCartSheet); }
+if(cartBackdrop){ cartBackdrop.addEventListener('click', closeCartSheet); }
 
 function showMsg(text, kind){
   formMsg.innerHTML = '';
@@ -124,6 +149,7 @@ function renderMenu(){
     const section = document.createElement('div');
     section.className = 'menu-category';
     const h2 = document.createElement('h2');
+    h2.className = 'category-rail';
     h2.textContent = g.label;
     section.appendChild(h2);
     g.items.forEach(function(item){ section.appendChild(renderItemRow(item, lang)); });
@@ -140,11 +166,14 @@ function renderCart(){
     p.textContent = t('order.cart.empty');
     cartLines.appendChild(p);
     cartTotalRow.hidden = true;
+    syncMobileCartBar(0, 0);
     return;
   }
   let total = 0;
+  let count = 0;
   cart.forEach(function(entry){
     total += entry.price * entry.qty;
+    count += entry.qty;
     const line = document.createElement('div');
     line.className = 'cart-line';
     const name = document.createElement('span');
@@ -161,6 +190,20 @@ function renderCart(){
   });
   cartTotalRow.hidden = false;
   cartTotal.textContent = formatIDR(total);
+  syncMobileCartBar(count, total);
+}
+
+function syncMobileCartBar(count, total){
+  if(!mobileCartBar) return;
+  mcbTotal.textContent = formatIDR(total);
+  if(count > 0){
+    mcbCount.removeAttribute('data-i18n');
+    mcbCount.textContent = count + (count === 1 ? ' item' : ' items');
+  }else{
+    mcbCount.setAttribute('data-i18n', 'order.cart.empty');
+    mcbCount.textContent = t('order.cart.empty');
+    closeCartSheet();
+  }
 }
 
 async function loadMenu(){
@@ -267,7 +310,7 @@ form.addEventListener('submit', async function(e){
       lines + '\n\n' +
       t('order.cart.total') + ': ' + formatIDR(total) +
       (notes ? '\nNotes: ' + notes : '');
-    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+    window.open('https://wa.me/' + normalizePhone(WA_NUMBER) + '?text=' + encodeURIComponent(msg), '_blank');
   }
 
   submitBtn.disabled = false;
@@ -279,6 +322,7 @@ form.addEventListener('submit', async function(e){
     renderMenu();
     renderCart();
     form.reset();
+    closeCartSheet();
   }else{
     showMsg(t('order.error'), 'error');
   }
