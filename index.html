@@ -103,21 +103,45 @@ img{display:block;max-width:100%;}
 header.site{
   position:fixed; top:0; left:0; right:0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
-  padding:22px 40px;
+  gap:16px;
+  padding:18px 40px;
   transition:background .35s ease, padding .35s ease;
 }
 header.site.scrolled{
   background:rgba(23,21,18,0.92);
   backdrop-filter:blur(6px);
-  padding:14px 40px;
+  padding:12px 40px;
   border-bottom:1px solid var(--line);
 }
-.brandmark{display:flex;align-items:center;gap:12px;}
+.brandmark{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .brandmark img{height:38px;width:38px;border-radius:50%;object-fit:cover;}
 .brandmark span{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;letter-spacing:0.01em;}
-nav.links{display:flex;gap:22px;font-size:0.84rem;letter-spacing:0.02em;}
+
+.header-mid{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:flex-end;flex:1;}
+nav.links{display:flex;gap:20px;font-size:0.83rem;letter-spacing:0.02em;}
 nav.links a{opacity:.82;transition:opacity .2s;white-space:nowrap;}
 nav.links a:hover,nav.links a:focus-visible{opacity:1;color:var(--gold);}
+
+.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+
+.lang-toggle{
+  display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
+  font-size:0.72rem; letter-spacing:0.03em;
+}
+.lang-toggle button{
+  background:transparent; border:0; color:var(--cream-dim);
+  padding:7px 12px; cursor:pointer; font-family:inherit; font-size:inherit;
+}
+.lang-toggle button.active{background:var(--gold); color:var(--ink); font-weight:600;}
+
+.btn-sm{
+  display:inline-block; padding:9px 16px; font-size:0.78rem; letter-spacing:0.02em;
+  border-radius:2px; white-space:nowrap;
+}
+.btn-sm.solid{background:var(--red); color:var(--cream);}
+.btn-sm.solid:hover{background:var(--red-deep);}
+.btn-sm.ghost{border:1px solid rgba(243,236,221,0.4); color:var(--cream);}
+.btn-sm.ghost:hover{border-color:var(--gold); color:var(--gold);}
 
 .nav-toggle{
   display:none;
@@ -127,6 +151,7 @@ nav.links a:hover,nav.links a:focus-visible{opacity:1;color:var(--gold);}
   cursor:pointer;
   position:relative;
   z-index:60;
+  flex-shrink:0;
 }
 .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{
   content:'';
@@ -195,7 +220,7 @@ nav.links a:hover,nav.links a:focus-visible{opacity:1;color:var(--gold);}
   margin-top:40px;
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:22px;
   flex-wrap:wrap;
 }
 .btn{
@@ -288,6 +313,12 @@ section{padding:110px 0;}
   color:var(--cream-dim);
   border-radius:999px;
 }
+.cafe-cta{
+  display:inline-block; margin-top:30px;
+  color:var(--gold); font-size:0.95rem; font-weight:500;
+  border-bottom:1px solid transparent;
+}
+.cafe-cta:hover{border-bottom-color:var(--gold);}
 
 /* --- gallery / venue --- */
 .venue{background:var(--panel-2);}
@@ -429,6 +460,7 @@ figcaption{
   position:relative;
 }
 .visit h2{font-size:clamp(2.4rem,6vw,4.4rem); color:#fff; max-width:760px; line-height:1.02;}
+.visit-cta{margin-top:26px;}
 .visit-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -455,6 +487,7 @@ figcaption{
   color:rgba(255,255,255,0.75);
   border-bottom:1px solid rgba(255,255,255,0.25);
 }
+.map-note a{text-decoration:underline;}
 
 footer.site{
   background:var(--red-deep);
@@ -466,6 +499,11 @@ footer.site{
   flex-wrap:wrap; gap:10px;
 }
 
+@media (max-width:1180px){
+  nav.links{gap:14px; font-size:0.78rem;}
+  .header-mid{gap:16px;}
+}
+
 @media (max-width:980px){
   .facility-grid{grid-template-columns:1fr 1fr;}
   .program-grid{grid-template-columns:1fr 1fr;}
@@ -475,6 +513,7 @@ footer.site{
 
 @media (max-width:860px){
   nav.links{display:none;}
+  .header-actions .btn-sm{display:none;}
   .nav-toggle{display:block;}
   .mobile-menu{
     display:block;
@@ -483,13 +522,16 @@ footer.site{
     padding:110px 40px 40px;
     transform:translateY(-100%);
     transition:transform .3s ease;
+    overflow-y:auto;
   }
   .mobile-menu.open{transform:translateY(0);}
   .mobile-menu a{
-    display:block; padding:16px 0; font-size:1.3rem;
+    display:block; padding:14px 0; font-size:1.2rem;
     border-bottom:1px solid var(--line);
     font-family:'Fraunces',serif;
   }
+  .mobile-menu .mobile-cta{display:flex; gap:12px; margin:22px 0 4px;}
+  .mobile-menu .mobile-cta .btn-sm{flex:1; text-align:center; font-size:0.85rem; padding:14px;}
   .section-head{grid-template-columns:1fr; gap:20px;}
   .intro-grid{grid-template-columns:1fr;}
   .intro-figure{order:-1;}
@@ -514,29 +556,49 @@ footer.site{
     <img src="images/logo.webp" width="38" height="38" alt="RiO de NARA logo — a canoe of paddlers">
     <span>RiO de NARA</span>
   </div>
-  <nav class="links" aria-label="Primary">
-    <a href="#vision">Vision</a>
-    <a href="#cafe">Café &amp; Resto</a>
-    <a href="#venue">Venue</a>
-    <a href="#programs">Programs</a>
-    <a href="#store">Store</a>
-    <a href="#learning">Community</a>
-    <a href="#visit">Visit</a>
-  </nav>
+
+  <div class="header-mid">
+    <nav class="links" aria-label="Primary">
+      <a href="#vision" data-i18n="nav.vision">Vision</a>
+      <a href="#cafe" data-i18n="nav.cafe">Café &amp; Resto</a>
+      <a href="#venue" data-i18n="nav.venue">Venue</a>
+      <a href="#programs" data-i18n="nav.programs">Programs</a>
+      <a href="#store" data-i18n="nav.store">Store</a>
+      <a href="#learning" data-i18n="nav.community">Community</a>
+      <a href="#visit" data-i18n="nav.visit">Visit</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="id">ID</button>
+      </div>
+      <a href="order.html" class="btn-sm ghost" data-i18n="nav.order">Order Online</a>
+      <a href="reserve.html" class="btn-sm solid" data-i18n="nav.reserve">Reserve a Table</a>
+    </div>
+  </div>
+
   <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
     <span></span>
   </button>
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-  <a href="#vision">Vision</a>
-  <a href="#cafe">Café &amp; Resto</a>
-  <a href="#venue">Venue</a>
-  <a href="#programs">Programs</a>
-  <a href="#store">Store</a>
-  <a href="#learning">Community</a>
-  <a href="#partners">Partners</a>
-  <a href="#visit">Visit</a>
+  <div class="mobile-cta">
+    <a href="order.html" class="btn-sm solid" data-i18n="nav.order">Order Online</a>
+    <a href="reserve.html" class="btn-sm ghost" data-i18n="nav.reserve">Reserve a Table</a>
+  </div>
+  <a href="#vision" data-i18n="nav.vision">Vision</a>
+  <a href="#cafe" data-i18n="nav.cafe">Café &amp; Resto</a>
+  <a href="#venue" data-i18n="nav.venue">Venue</a>
+  <a href="#programs" data-i18n="nav.programs">Programs</a>
+  <a href="#store" data-i18n="nav.store">Store</a>
+  <a href="#learning" data-i18n="nav.community">Community</a>
+  <a href="#partners" data-i18n="nav.partners">Partners</a>
+  <a href="#visit" data-i18n="nav.visit">Visit</a>
+  <div class="lang-toggle" role="group" aria-label="Language / Bahasa" style="margin-top:26px;width:fit-content;">
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="id">ID</button>
+  </div>
 </nav>
 
 <main id="main">
@@ -544,13 +606,13 @@ footer.site{
 <section class="hero">
   <img class="bg" src="images/hero-gate.webp" alt="The red gate of RiO de NARA, lit at dusk, opening onto its courtyard" fetchpriority="high" loading="eager" decoding="async">
   <div class="hero-content wrap">
-    <div class="hero-eyebrow">Timika, Papua — Café · Resto · Lounge</div>
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">Timika, Papua — Café · Resto · Lounge</div>
     <h1>RiO de <em>NARA</em></h1>
-    <p class="hero-sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
+    <p class="hero-sub" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
     <div class="hero-row">
-      <a href="#visit" class="btn">Plan your visit</a>
-      <a href="#cafe" class="btn ghost">See the café</a>
-      <span class="hero-loc">Open daily &nbsp;·&nbsp; Timika, Papua, Indonesia</span>
+      <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
+      <a href="#visit" class="btn ghost" data-i18n="hero.btnVisit">Plan your visit</a>
+      <span class="hero-loc" data-i18n="hero.loc">Open daily &nbsp;·&nbsp; Timika, Papua, Indonesia</span>
     </div>
   </div>
 </section>
@@ -560,9 +622,9 @@ footer.site{
 <section class="intro" id="vision">
   <div class="wrap intro-grid">
     <div class="intro-text">
-      <div class="kicker">Vision &amp; Mission</div>
-      <h2>Not just a café. A workshop for Papuan entrepreneurs, run in public.</h2>
-      <p>Every table, every cup of coffee, and every band on our stage is part of the same idea: a working café and lounge that doubles as a training ground, where the people who run the room are learning to run their own. RiO de NARA is the flagship of a wider House of Creativity for Papuan small entrepreneurs — a project growing, unit by unit, into its own community of independent businesses.</p>
+      <div class="kicker" data-i18n="vision.kicker">Vision &amp; Mission</div>
+      <h2 data-i18n="vision.h2">Not just a café. A workshop for Papuan entrepreneurs, run in public.</h2>
+      <p data-i18n="vision.p">Every table, every cup of coffee, and every band on our stage is part of the same idea: a working café and lounge that doubles as a training ground, where the people who run the room are learning to run their own. RiO de NARA is the flagship of a wider House of Creativity for Papuan small entrepreneurs — a project growing, unit by unit, into its own community of independent businesses.</p>
       <div class="tagline-block">
         <div class="id">"Melahirkan Pengusaha Papua, Satu Cangkir demi Satu Cangkir."</div>
         <div class="en">Empowering Papuan entrepreneurs, one cup at a time.</div>
@@ -577,82 +639,83 @@ footer.site{
 <section class="about" id="cafe">
   <div class="wrap">
     <div class="section-head">
-      <h2>Café &amp; Resto</h2>
-      <p>A covered courtyard of teak-root tables and rattan chairs, built for coffee in the morning and a full table at night — with the stage warming up most evenings.</p>
+      <h2 data-i18n="cafe.h2">Café &amp; Resto</h2>
+      <p data-i18n="cafe.p">A covered courtyard of teak-root tables and rattan chairs, built for coffee in the morning and a full table at night — with the stage warming up most evenings.</p>
     </div>
     <div class="about-list">
       <div class="about-item">
         <span class="mark">01</span>
-        <h3>Coffee &amp; bar</h3>
-        <p>Papuan-grown coffee, hand-poured by baristas trained on site, alongside tea, mocktails, and a full bar for the evening crowd.</p>
+        <h3 data-i18n="cafe.item1.h3">Coffee &amp; bar</h3>
+        <p data-i18n="cafe.item1.p">Papuan-grown coffee, hand-poured by baristas trained on site, alongside tea, mocktails, and a full bar for the evening crowd.</p>
       </div>
       <div class="about-item">
         <span class="mark">02</span>
-        <h3>Resto &amp; shared plates</h3>
-        <p>A kitchen built around cold storage and volume, serving everyday plates through to catering for the venue's own events.</p>
+        <h3 data-i18n="cafe.item2.h3">Resto &amp; shared plates</h3>
+        <p data-i18n="cafe.item2.p">A kitchen built around cold storage and volume, serving everyday plates through to catering for the venue's own events.</p>
       </div>
       <div class="about-item">
         <span class="mark">03</span>
-        <h3>Music &amp; lounge</h3>
-        <p>Live sets from the RiO de NARA Band and guest acts, a red-carpet stage for launches, and a courtyard that turns into a lounge after dark.</p>
+        <h3 data-i18n="cafe.item3.h3">Music &amp; lounge</h3>
+        <p data-i18n="cafe.item3.p">Live sets from the RiO de NARA Band and guest acts, a red-carpet stage for launches, and a courtyard that turns into a lounge after dark.</p>
       </div>
     </div>
     <div class="menu-note">
-      <span class="lbl">On the menu:</span>
-      <span class="menu-pill">Coffee &amp; espresso</span>
-      <span class="menu-pill">Tea &amp; mocktails</span>
-      <span class="menu-pill">Fresh juice</span>
-      <span class="menu-pill">Shared plates</span>
-      <span class="menu-pill">Event catering</span>
+      <span class="lbl" data-i18n="cafe.menuLabel">On the menu:</span>
+      <span class="menu-pill" data-i18n="cafe.pill1">Coffee &amp; espresso</span>
+      <span class="menu-pill" data-i18n="cafe.pill2">Tea &amp; mocktails</span>
+      <span class="menu-pill" data-i18n="cafe.pill3">Fresh juice</span>
+      <span class="menu-pill" data-i18n="cafe.pill4">Shared plates</span>
+      <span class="menu-pill" data-i18n="cafe.pill5">Event catering</span>
     </div>
+    <a href="order.html" class="cafe-cta" data-i18n="cafe.cta">See the full menu &amp; order →</a>
   </div>
 </section>
 
 <section class="venue" id="venue">
   <div class="wrap">
     <div class="section-head">
-      <h2>The venue</h2>
-      <p>A torii-framed gate, red-and-black diamond tile underfoot, and a courtyard that scales from a quiet coffee to a full event with staging and a red carpet.</p>
+      <h2 data-i18n="venue.h2">The venue</h2>
+      <p data-i18n="venue.p">A torii-framed gate, red-and-black diamond tile underfoot, and a courtyard that scales from a quiet coffee to a full event with staging and a red carpet.</p>
     </div>
     <div class="venue-grid">
       <figure class="v1">
         <img src="images/venue-street.webp" width="825" height="1100" alt="RiO de NARA's red gate seen from the street at dusk" loading="lazy" decoding="async">
-        <figcaption>The gate, from the street</figcaption>
+        <figcaption data-i18n="venue.caption1">The gate, from the street</figcaption>
       </figure>
       <figure class="v2">
         <img src="images/venue-courtyard.webp" width="750" height="1000" alt="Dining courtyard with wooden tables, rattan chairs and hanging red lanterns" loading="lazy" decoding="async">
-        <figcaption>Dining courtyard</figcaption>
+        <figcaption data-i18n="venue.caption2">Dining courtyard</figcaption>
       </figure>
       <figure class="v3">
         <img src="images/venue-stage.webp" width="750" height="1000" alt="A guitarist performing on the RiO de NARA stage" loading="lazy" decoding="async">
-        <figcaption>Live on stage</figcaption>
+        <figcaption data-i18n="venue.caption3">Live on stage</figcaption>
       </figure>
       <figure class="v4">
         <img src="images/venue-event.webp" width="750" height="1000" alt="Tables dressed in white and red for a private event" loading="lazy" decoding="async">
-        <figcaption>Set for an event</figcaption>
+        <figcaption data-i18n="venue.caption4">Set for an event</figcaption>
       </figure>
       <figure class="v5">
         <img src="images/venue-alley.webp" width="750" height="1000" alt="Close-up view of the red gate and entrance walkway" loading="lazy" decoding="async">
-        <figcaption>The gate, up close</figcaption>
+        <figcaption data-i18n="venue.caption5">The gate, up close</figcaption>
       </figure>
     </div>
 
     <div class="facility-grid">
       <div class="facility-cell">
-        <h4>Launch Room &amp; Meeting Rooms</h4>
-        <p>Co-working space and meeting rooms with projector, whiteboard and high-speed WiFi for corporate meetings and community events.</p>
+        <h4 data-i18n="venue.facility1.h4">Launch Room &amp; Meeting Rooms</h4>
+        <p data-i18n="venue.facility1.p">Co-working space and meeting rooms with projector, whiteboard and high-speed WiFi for corporate meetings and community events.</p>
       </div>
       <div class="facility-cell">
-        <h4>Taman Café</h4>
-        <p>A landscaped café garden, kept and decorated for everyday visits and dressed for events.</p>
+        <h4 data-i18n="venue.facility2.h4">Taman Café</h4>
+        <p data-i18n="venue.facility2.p">A landscaped café garden, kept and decorated for everyday visits and dressed for events.</p>
       </div>
       <div class="facility-cell">
-        <h4>Kitchen &amp; Bar</h4>
-        <p>A kitchen built around cold storage, and a bar handling coffee, tea, mocktails and juice.</p>
+        <h4 data-i18n="venue.facility3.h4">Kitchen &amp; Bar</h4>
+        <p data-i18n="venue.facility3.p">A kitchen built around cold storage, and a bar handling coffee, tea, mocktails and juice.</p>
       </div>
       <div class="facility-cell">
-        <h4>Security &amp; Parking</h4>
-        <p>Attended parking and on-site security for guests, vehicles, and event nights.</p>
+        <h4 data-i18n="venue.facility4.h4">Security &amp; Parking</h4>
+        <p data-i18n="venue.facility4.p">Attended parking and on-site security for guests, vehicles, and event nights.</p>
       </div>
     </div>
   </div>
@@ -661,30 +724,30 @@ footer.site{
 <section class="programs" id="programs">
   <div class="wrap">
     <div class="section-head">
-      <h2>Beyond the café</h2>
-      <p>RiO de NARA is growing into a family of Papuan-run ventures, each trained and launched from the same courtyard.</p>
+      <h2 data-i18n="programs.h2">Beyond the café</h2>
+      <p data-i18n="programs.p">RiO de NARA is growing into a family of Papuan-run ventures, each trained and launched from the same courtyard.</p>
     </div>
     <div class="program-grid">
       <div class="program-card">
         <span class="mark">♪</span>
-        <h3>RiO de NARA Band</h3>
-        <p>The house band behind our live sets, playing the stage most evenings alongside guest acts.</p>
+        <h3 data-i18n="programs.band.h3">RiO de NARA Band</h3>
+        <p data-i18n="programs.band.p">The house band behind our live sets, playing the stage most evenings alongside guest acts.</p>
       </div>
       <div class="program-card">
         <span class="mark">✤</span>
-        <h3>RiO de NARA Agribusiness</h3>
-        <p>The farming program behind our produce and coffee supply, training people from the ground up — literally.</p>
+        <h3 data-i18n="programs.agri.h3">RiO de NARA Agribusiness</h3>
+        <p data-i18n="programs.agri.p">The farming program behind our produce and coffee supply, training people from the ground up — literally.</p>
       </div>
       <div class="program-card">
         <span class="mark">→</span>
-        <h3>RiO de NARA Tour &amp; Travel</h3>
-        <p>A newer venture in the RiO de NARA family.</p>
-        <span class="soon">In development</span>
+        <h3 data-i18n="programs.tour.h3">RiO de NARA Tour &amp; Travel</h3>
+        <p data-i18n="programs.tour.p">A newer venture in the RiO de NARA family.</p>
+        <span class="soon" data-i18n="programs.tour.badge">In development</span>
       </div>
       <div class="program-card">
         <span class="mark">◆</span>
-        <h3>RiO de NARA Teamwork</h3>
-        <p>The shared culture and cross-unit collaboration that keeps every RiO de NARA business — and the entrepreneurs behind them — working as one.</p>
+        <h3 data-i18n="programs.team.h3">RiO de NARA Teamwork</h3>
+        <p data-i18n="programs.team.p">The shared culture and cross-unit collaboration that keeps every RiO de NARA business — and the entrepreneurs behind them — working as one.</p>
       </div>
     </div>
   </div>
@@ -693,26 +756,26 @@ footer.site{
 <section class="store" id="store">
   <div class="wrap store-grid">
     <div class="store-text">
-      <div class="kicker">Official Store</div>
-      <h2>Persipura Jayapura FC, at RiO de NARA.</h2>
-      <p>RiO de NARA is the official store of Persipura Jayapura FC — the destination for supporters, tourists, and Papua's football community to pick up genuine club merchandise while they're here for coffee.</p>
+      <div class="kicker" data-i18n="store.kicker">Official Store</div>
+      <h2 data-i18n="store.h2">Persipura Jayapura FC, at RiO de NARA.</h2>
+      <p data-i18n="store.p">RiO de NARA is the official store of Persipura Jayapura FC — the destination for supporters, tourists, and Papua's football community to pick up genuine club merchandise while they're here for coffee.</p>
       <div class="store-list">
-        <span>Home &amp; away jerseys</span>
-        <span>Scarves</span>
-        <span>Caps</span>
-        <span>T-shirts</span>
-        <span>Official accessories</span>
+        <span data-i18n="store.pill1">Home &amp; away jerseys</span>
+        <span data-i18n="store.pill2">Scarves</span>
+        <span data-i18n="store.pill3">Caps</span>
+        <span data-i18n="store.pill4">T-shirts</span>
+        <span data-i18n="store.pill5">Official accessories</span>
       </div>
-      <div class="store-badge">★ Official Store — Persipura Jayapura FC</div>
+      <div class="store-badge" data-i18n="store.badge">★ Official Store — Persipura Jayapura FC</div>
     </div>
     <div class="store-visual">
       <div class="crest">RdN</div>
-      <div class="crest-sub">Official Store · Persipura Jayapura FC</div>
+      <div class="crest-sub" data-i18n="store.visual.sub">Official Store · Persipura Jayapura FC</div>
       <ul>
-        <li><span>Home Jersey</span><span>In store</span></li>
-        <li><span>Away Jersey</span><span>In store</span></li>
-        <li><span>Scarves &amp; Caps</span><span>In store</span></li>
-        <li><span>Accessories</span><span>In store</span></li>
+        <li><span data-i18n="store.list.home">Home Jersey</span><span data-i18n="store.list.status">In store</span></li>
+        <li><span data-i18n="store.list.away">Away Jersey</span><span data-i18n="store.list.status">In store</span></li>
+        <li><span data-i18n="store.list.scarves">Scarves &amp; Caps</span><span data-i18n="store.list.status">In store</span></li>
+        <li><span data-i18n="store.list.acc">Accessories</span><span data-i18n="store.list.status">In store</span></li>
       </ul>
     </div>
   </div>
@@ -721,18 +784,18 @@ footer.site{
 <section class="learn" id="learning">
   <div class="wrap">
     <div class="section-head">
-      <h2>Community-Based Learning</h2>
-      <p>RiO de NARA runs as a set of working programs. People train on the job, in the room, alongside the guests they're serving.</p>
+      <h2 data-i18n="learn.h2">Community-Based Learning</h2>
+      <p data-i18n="learn.p">RiO de NARA runs as a set of working programs. People train on the job, in the room, alongside the guests they're serving.</p>
     </div>
     <div class="learn-grid">
-      <div class="learn-cell"><h4>Barista</h4><span>Coffee craft, front of house</span></div>
-      <div class="learn-cell"><h4>Coffee Production</h4><span>From bean to cup</span></div>
-      <div class="learn-cell"><h4>Musical</h4><span>The RiO de NARA Band</span></div>
-      <div class="learn-cell"><h4>Movie Making</h4><span>Filming venue &amp; events</span></div>
-      <div class="learn-cell"><h4>Content Creator</h4><span>Telling the story online</span></div>
-      <div class="learn-cell"><h4>Farming</h4><span>RiO de NARA Agribusiness</span></div>
-      <div class="learn-cell"><h4>Soccer Team</h4><span>In step with Persipura</span></div>
-      <div class="learn-cell"><h4>Bible Study</h4><span>Fellowship &amp; formation</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell1.h4">Barista</h4><span data-i18n="learn.cell1.span">Coffee craft, front of house</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell2.h4">Coffee Production</h4><span data-i18n="learn.cell2.span">From bean to cup</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell3.h4">Musical</h4><span data-i18n="learn.cell3.span">The RiO de NARA Band</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell4.h4">Movie Making</h4><span data-i18n="learn.cell4.span">Filming venue &amp; events</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell5.h4">Content Creator</h4><span data-i18n="learn.cell5.span">Telling the story online</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell6.h4">Farming</h4><span data-i18n="learn.cell6.span">RiO de NARA Agribusiness</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell7.h4">Soccer Team</h4><span data-i18n="learn.cell7.span">In step with Persipura</span></div>
+      <div class="learn-cell"><h4 data-i18n="learn.cell8.h4">Bible Study</h4><span data-i18n="learn.cell8.span">Fellowship &amp; formation</span></div>
     </div>
   </div>
 </section>
@@ -740,11 +803,11 @@ footer.site{
 <section class="partners" id="partners">
   <div class="wrap">
     <div class="section-head">
-      <h2>Partnerships</h2>
-      <p>RiO de NARA works alongside local brands, teams, and creative talent to build out its store, its stage, and its tech.</p>
+      <h2 data-i18n="partners.h2">Partnerships</h2>
+      <p data-i18n="partners.p">RiO de NARA works alongside local brands, teams, and creative talent to build out its store, its stage, and its tech.</p>
     </div>
     <div class="partner-strip">
-      <div class="partner-pill"><strong>Persipura Jayapura</strong> — official store</div>
+      <div class="partner-pill"><strong>Persipura Jayapura</strong> — <span data-i18n="partners.official">official store</span></div>
       <div class="partner-pill"><strong>Natsu Japanese Ice Cream</strong></div>
       <div class="partner-pill"><strong>Mekari Talent</strong></div>
       <div class="partner-pill"><strong>The Karaka's</strong></div>
@@ -756,22 +819,23 @@ footer.site{
 
 <section class="visit" id="visit">
   <div class="wrap">
-    <h2>Come sit under the gate.</h2>
+    <h2 data-i18n="visit.h2">Come sit under the gate.</h2>
+    <div class="visit-cta"><a href="reserve.html" class="btn" data-i18n="visit.reserveCta">Reserve a table →</a></div>
     <div class="visit-grid">
       <div class="visit-col">
-        <h5>Location</h5>
-        <p>Timika, Papua, Indonesia</p>
+        <h5 data-i18n="visit.loc.label">Location</h5>
+        <p data-i18n="visit.loc.value">Timika, Papua, Indonesia</p>
       </div>
       <div class="visit-col">
-        <h5>Hours</h5>
-        <p>Open daily · morning coffee through late-evening lounge</p>
+        <h5 data-i18n="visit.hours.label">Hours</h5>
+        <p data-i18n="visit.hours.value">Open daily · morning coffee through late-evening lounge</p>
       </div>
       <div class="visit-col">
-        <h5>For events &amp; bookings</h5>
-        <p>Meeting rooms, launch events, and full-venue bookings available — reach out via our Instagram or in person at RiO de NARA.</p>
+        <h5 data-i18n="visit.events.label">For events &amp; bookings</h5>
+        <p data-i18n="visit.events.value">Meeting rooms, launch events, and full-venue bookings available — reach out via our Instagram or in person at RiO de NARA.</p>
       </div>
       <div class="visit-col">
-        <h5>Follow along</h5>
+        <h5 data-i18n="visit.follow.label">Follow along</h5>
         <p><a href="https://www.instagram.com/riodenara" target="_blank" rel="noopener">@riodenara</a></p>
       </div>
     </div>
@@ -782,7 +846,7 @@ footer.site{
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <p class="map-note">Look for the red gate. For exact directions, message us on Instagram — <a href="https://www.instagram.com/riodenara" target="_blank" rel="noopener">@riodenara</a>.</p>
+    <p class="map-note"><span data-i18n="visit.mapnote">Look for the red gate. For exact directions, message us on Instagram —</span> <a href="https://www.instagram.com/riodenara" target="_blank" rel="noopener">@riodenara</a>.</p>
   </div>
 </section>
 
@@ -790,11 +854,12 @@ footer.site{
 
 <footer class="site">
   <div class="wrap footer-row">
-    <span>RiO de NARA — Café, Resto &amp; Lounge, Timika, Papua</span>
-    <span>Official Store, Persipura Jayapura FC</span>
+    <span data-i18n="footer.left">RiO de NARA — Café, Resto &amp; Lounge, Timika, Papua</span>
+    <span data-i18n="footer.right">Official Store, Persipura Jayapura FC</span>
   </div>
 </footer>
 
+<script src="js/i18n.js"></script>
 <script>
 (function(){
   var h = document.getElementById('siteHeader');

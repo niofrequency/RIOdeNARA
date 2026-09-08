@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — RiO de NARA</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.ico" sizes="any">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+:root{
+  --ink:#171512; --panel:#1e1a16; --panel-2:#221d18;
+  --red:#c22a17; --red-deep:#7e1a0d; --gold:#eecf6a;
+  --cream:#f3ecdd; --cream-dim:#cfc4ac; --line:rgba(238,207,106,0.22);
+  --green:#5fb46e; --blue:#5b9bd5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--ink);color:var(--cream);font-family:'Work Sans',sans-serif;line-height:1.5;min-height:100vh;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;color:var(--cream);}
+a{color:inherit;}
+button,input,select,textarea{font-family:inherit;}
+:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+[hidden]{display:none !important;}
+
+/* --- login --- */
+.login-view{
+  min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+}
+.login-card{
+  width:100%; max-width:380px; background:var(--panel); border:1px solid var(--line);
+  border-radius:6px; padding:36px 32px;
+}
+.login-card img{height:44px;width:44px;border-radius:50%;object-fit:cover;margin-bottom:16px;}
+.login-card h1{font-size:1.4rem;margin-bottom:8px;}
+.login-card p.sub{color:var(--cream-dim);font-size:0.9rem;margin-bottom:24px;}
+.field{margin-top:14px;}
+.field:first-of-type{margin-top:0;}
+.field label{display:block;font-size:0.78rem;color:var(--cream-dim);margin-bottom:6px;}
+.field input{
+  width:100%; padding:10px 12px; background:var(--panel-2); border:1px solid var(--line);
+  border-radius:2px; color:var(--cream); font-size:0.92rem;
+}
+.primary-btn{
+  width:100%; margin-top:20px; padding:12px; background:var(--red); color:var(--cream);
+  border:0; border-radius:2px; font-size:0.9rem; cursor:pointer;
+}
+.primary-btn:hover{background:var(--red-deep);}
+.primary-btn:disabled{opacity:0.6;cursor:default;}
+.hint{margin-top:18px;font-size:0.78rem;color:var(--cream-dim);}
+.form-msg{margin-top:12px;font-size:0.82rem;padding:9px 11px;border-radius:2px;}
+.form-msg.error{background:rgba(194,42,23,0.15);color:#f2a89a;border:1px solid rgba(194,42,23,0.35);}
+.form-msg.success{background:rgba(96,180,110,0.15);color:#8fd39f;border:1px solid rgba(96,180,110,0.35);}
+.config-warning{
+  max-width:480px; margin:0 auto; background:var(--panel-2); border:1px solid var(--line);
+  padding:20px; border-radius:6px; font-size:0.88rem; color:var(--cream-dim); line-height:1.6;
+}
+.config-warning code{background:var(--ink);padding:2px 6px;border-radius:3px;font-size:0.85em;}
+
+/* --- dashboard --- */
+.dashboard-view{min-height:100vh;}
+.admin-header{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 24px; border-bottom:1px solid var(--line); background:var(--panel);
+  position:sticky; top:0; z-index:10; flex-wrap:wrap;
+}
+.brandmark{display:flex;align-items:center;gap:10px;}
+.brandmark img{height:30px;width:30px;border-radius:50%;object-fit:cover;}
+.brandmark span{font-family:'Fraunces',serif;font-weight:700;font-size:0.98rem;}
+.admin-actions{display:flex;align-items:center;gap:16px;font-size:0.82rem;color:var(--cream-dim);}
+.admin-actions a:hover{color:var(--gold);}
+.admin-actions button{
+  background:transparent;border:1px solid var(--line);color:var(--cream);
+  padding:7px 14px;border-radius:2px;cursor:pointer;font-size:0.8rem;
+}
+.admin-actions button:hover{border-color:var(--gold);color:var(--gold);}
+
+.admin-tabs{
+  display:flex; gap:4px; padding:0 24px; background:var(--panel);
+  border-bottom:1px solid var(--line); overflow-x:auto;
+}
+.tab-btn{
+  background:transparent;border:0;color:var(--cream-dim);padding:14px 18px;
+  cursor:pointer;font-size:0.88rem;border-bottom:2px solid transparent;white-space:nowrap;
+}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.count-badge{
+  display:inline-block;background:var(--red);color:var(--cream);font-size:0.68rem;
+  padding:2px 7px;border-radius:999px;margin-left:6px;
+}
+
+.admin-main{max-width:1100px;margin:0 auto;padding:28px 24px 80px;}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.filter-btn{
+  background:transparent;border:1px solid var(--line);color:var(--cream-dim);
+  padding:8px 14px;border-radius:999px;cursor:pointer;font-size:0.8rem;
+}
+.filter-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold);font-weight:600;}
+
+.empty-state{color:var(--cream-dim);font-size:0.92rem;padding:30px 0;text-align:center;}
+
+.card{
+  background:var(--panel); border:1px solid var(--line); border-radius:4px;
+  padding:18px 20px; margin-bottom:14px;
+}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.card-title{font-size:1rem;font-weight:600;}
+.card-meta{font-size:0.78rem;color:var(--cream-dim);margin-top:4px;}
+.card-meta a{color:var(--gold);}
+.status-pill{
+  font-size:0.72rem; padding:4px 10px; border-radius:999px; letter-spacing:0.02em;
+  border:1px solid var(--line); white-space:nowrap;
+}
+.status-new,.status-pending{color:var(--gold);border-color:var(--gold);}
+.status-confirmed{color:var(--blue);border-color:var(--blue);}
+.status-preparing{color:var(--gold);border-color:var(--gold);}
+.status-ready{color:var(--green);border-color:var(--green);}
+.status-completed{color:var(--cream-dim);}
+.status-cancelled{color:#f2a89a;border-color:var(--red);}
+
+.card-body{margin-top:12px;font-size:0.88rem;color:var(--cream);}
+.card-items{margin-top:8px;padding-left:18px;color:var(--cream-dim);font-size:0.85rem;}
+.card-notes{margin-top:10px;font-size:0.82rem;color:var(--cream-dim);font-style:italic;}
+.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap;gap:10px;}
+.card-total{font-weight:600;color:var(--gold);}
+.status-select{
+  background:var(--panel-2); border:1px solid var(--line); color:var(--cream);
+  padding:7px 10px; border-radius:2px; font-size:0.82rem;
+}
+
+/* --- menu tab --- */
+.menu-group-title{font-size:0.95rem;color:var(--gold);margin:22px 0 10px;letter-spacing:0.03em;}
+.menu-row{
+  display:grid; grid-template-columns:1.3fr 1.3fr 1fr 90px 70px 70px; gap:10px; align-items:center;
+  background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px;
+}
+.menu-row input[type="text"],.menu-row input[type="number"]{
+  width:100%; padding:8px 10px; background:var(--panel-2); border:1px solid var(--line);
+  border-radius:2px; color:var(--cream); font-size:0.85rem;
+}
+.menu-row label.avail{display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--cream-dim);}
+.icon-btn{
+  background:transparent;border:1px solid var(--line);color:var(--cream-dim);
+  padding:8px 10px;border-radius:2px;cursor:pointer;font-size:0.78rem;
+}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold);}
+.icon-btn.danger:hover{border-color:var(--red);color:#f2a89a;}
+
+.add-item-card{
+  margin-top:34px; background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:20px;
+}
+.add-item-card h3{font-size:1rem;margin-bottom:14px;}
+.add-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.add-grid .field{margin-top:0;}
+.add-grid input{
+  width:100%; padding:9px 11px; background:var(--panel-2); border:1px solid var(--line);
+  border-radius:2px; color:var(--cream); font-size:0.88rem;
+}
+.seed-row{margin-bottom:20px;}
+.seed-row button{
+  background:var(--panel-2); border:1px dashed var(--line); color:var(--cream-dim);
+  padding:12px 16px; border-radius:4px; cursor:pointer; font-size:0.85rem; width:100%;
+}
+.seed-row button:hover{border-color:var(--gold);color:var(--gold);}
+
+@media (max-width:760px){
+  .menu-row{grid-template-columns:1fr 1fr; grid-auto-rows:auto;}
+  .add-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="configWarning" class="login-view" hidden>
+  <div class="config-warning">
+    <h2 style="font-size:1.1rem;margin-bottom:10px;">Admin isn't connected yet</h2>
+    <p>This page needs a Firebase project to store and show orders/reservations. Open <code>js/firebase-config.js</code> in the repository and follow <code>SETUP.md</code> to connect it — it takes about 5 minutes and is free.</p>
+  </div>
+</div>
+
+<div id="loginView" class="login-view" hidden>
+  <div class="login-card">
+    <img src="../images/logo.webp" alt="RiO de NARA logo">
+    <h1>RiO de NARA</h1>
+    <p class="sub">Admin — sign in to manage orders, reservations and the menu.</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="primary-btn" id="loginBtn">Sign in</button>
+      <div id="loginMsg"></div>
+    </form>
+    <p class="hint">No login yet? Create one for yourself in the Firebase console — see SETUP.md.</p>
+  </div>
+</div>
+
+<div id="dashboardView" class="dashboard-view" hidden>
+  <header class="admin-header">
+    <div class="brandmark">
+      <img src="../images/logo.webp" alt="RiO de NARA logo">
+      <span>RiO de NARA — Admin</span>
+    </div>
+    <div class="admin-actions">
+      <span id="userEmail"></span>
+      <a href="../index.html" target="_blank">View site ↗</a>
+      <button type="button" id="signOutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <nav class="admin-tabs">
+    <button class="tab-btn active" data-tab="orders">Orders<span class="count-badge" id="ordersCount" hidden>0</span></button>
+    <button class="tab-btn" data-tab="reservations">Reservations<span class="count-badge" id="resCount" hidden>0</span></button>
+    <button class="tab-btn" data-tab="menu">Menu</button>
+  </nav>
+
+  <main class="admin-main">
+
+    <section id="tabOrders" class="tab-panel">
+      <div class="filter-row" id="ordersFilter" data-active="all">
+        <button class="filter-btn active" data-status="all">All</button>
+        <button class="filter-btn" data-status="new">New</button>
+        <button class="filter-btn" data-status="confirmed">Confirmed</button>
+        <button class="filter-btn" data-status="preparing">Preparing</button>
+        <button class="filter-btn" data-status="ready">Ready</button>
+        <button class="filter-btn" data-status="completed">Completed</button>
+        <button class="filter-btn" data-status="cancelled">Cancelled</button>
+      </div>
+      <div id="ordersList"><p class="empty-state">Loading orders…</p></div>
+    </section>
+
+    <section id="tabReservations" class="tab-panel" hidden>
+      <div class="filter-row" id="resFilter" data-active="all">
+        <button class="filter-btn active" data-status="all">All</button>
+        <button class="filter-btn" data-status="pending">Pending</button>
+        <button class="filter-btn" data-status="confirmed">Confirmed</button>
+        <button class="filter-btn" data-status="completed">Completed</button>
+        <button class="filter-btn" data-status="cancelled">Cancelled</button>
+      </div>
+      <div id="resList"><p class="empty-state">Loading reservations…</p></div>
+    </section>
+
+    <section id="tabMenu" class="tab-panel" hidden>
+      <div class="seed-row" id="seedRow" hidden>
+        <button type="button" id="seedBtn">Load starter menu (12 sample items) — you can edit or delete them anytime</button>
+      </div>
+      <div id="menuList"><p class="empty-state">Loading menu…</p></div>
+
+      <div class="add-item-card">
+        <h3>Add a menu item</h3>
+        <form id="addItemForm" class="add-grid">
+          <div class="field">
+            <label>Name (English)</label>
+            <input type="text" id="newNameEn" required>
+          </div>
+          <div class="field">
+            <label>Name (Bahasa Indonesia)</label>
+            <input type="text" id="newNameId" required>
+          </div>
+          <div class="field">
+            <label>Category (English)</label>
+            <input type="text" id="newCatEn" placeholder="e.g. Coffee" required>
+          </div>
+          <div class="field">
+            <label>Category (Bahasa Indonesia)</label>
+            <input type="text" id="newCatId" placeholder="e.g. Kopi" required>
+          </div>
+          <div class="field">
+            <label>Price (IDR)</label>
+            <input type="number" id="newPrice" min="0" step="500" required>
+          </div>
+          <div class="field">
+            <label>Sort order (number, lower shows first)</label>
+            <input type="number" id="newOrder" min="0" step="1" value="0">
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <button type="submit" class="primary-btn" id="addItemBtn">Add item</button>
+            <div id="addItemMsg"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="../js/firebase-config.js"></script>
+<script type="module" src="../js/app-admin.js"></script>
+</body>
+</html>
