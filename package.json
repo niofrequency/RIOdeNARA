@@ -1,0 +1,9 @@
+{
+  "name": "rio-de-nara-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "RiO de NARA — Café, Resto & Lounge website (static site, no framework).",
+  "scripts": {
+    "build": "node scripts/generate-config.js"
+  }
+}
