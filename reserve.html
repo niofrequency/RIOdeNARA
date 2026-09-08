@@ -48,16 +48,8 @@ header.top{
 .page-head h1{font-size:clamp(1.9rem,4vw,2.5rem);line-height:1.1;}
 .page-head p{margin-top:14px;color:var(--cream-dim);font-size:1.02rem;}
 
-form.reserve-card{margin-top:34px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:28px 26px;}
+form.reserve-card{margin-top:34px;padding:32px 28px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
-.submit-btn{
-  width:100%; margin-top:22px; padding:15px; background:var(--red); color:var(--cream);
-  border:0; border-radius:2px; font-size:0.92rem; letter-spacing:0.02em; cursor:pointer;
-  font-family:inherit; min-height:48px; transition:background .2s, transform .18s;
-}
-.submit-btn:hover{background:var(--red-deep); transform:translateY(-2px);}
-.submit-btn:disabled{opacity:0.6;cursor:default;transform:none;}
 
 @media (max-width:900px){
   .reserve-layout{grid-template-columns:1fr;}
@@ -88,7 +80,7 @@ form.reserve-card{margin-top:34px;background:var(--panel);border:1px solid var(-
 
 <main class="reserve-layout">
   <div class="reserve-context">
-    <img src="images/venue-courtyard.webp" alt="Dining courtyard at RiO de NARA under red lanterns" loading="eager" decoding="async">
+    <img src="images/venue-alley.webp" alt="Close-up view of RiO de NARA's red gate and entrance walkway" loading="eager" decoding="async">
     <div class="ctx-copy">
       <div class="ctx-kicker" data-i18n="reserve.kicker">Reserve a Table</div>
       <h2 data-i18n="reserve.h2">Save your table under the gate.</h2>
@@ -103,7 +95,7 @@ form.reserve-card{margin-top:34px;background:var(--panel);border:1px solid var(-
         <p data-i18n="reserve.intro">Tell us when you're coming and how many — we'll confirm on WhatsApp.</p>
       </div>
 
-      <form id="reserveForm" class="reserve-card">
+      <form id="reserveForm" class="reserve-card signboard">
         <div class="field">
           <label for="resName" data-i18n="order.form.name">Full name</label>
           <input type="text" id="resName" name="resName" required>
@@ -130,7 +122,7 @@ form.reserve-card{margin-top:34px;background:var(--panel);border:1px solid var(-
           <label for="resNotes" data-i18n="order.form.notes">Notes (optional)</label>
           <textarea id="resNotes" name="resNotes"></textarea>
         </div>
-        <button type="submit" class="submit-btn" id="submitBtn" data-i18n="reserve.form.submit">Send reservation via WhatsApp</button>
+        <button type="submit" class="btn full" id="submitBtn" style="margin-top:22px;" data-i18n="reserve.form.submit">Send reservation via WhatsApp</button>
         <div id="formMsg"></div>
       </form>
 
