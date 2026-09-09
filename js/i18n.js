@@ -23,7 +23,7 @@ window.RDN_I18N = {
     "nav.reserve": "Reserve a Table",
 
     /* hero */
-    "hero.eyebrow": "Timika, Papua — Café · Resto · Lounge",
+    "hero.eyebrow": "Vocolaboration Music & Arts, Lounge, Cafe, Bar",
     "hero.sub": "A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.",
     "hero.btnVisit": "Plan your visit",
     "hero.btnCafe": "See the café",
@@ -198,7 +198,7 @@ window.RDN_I18N = {
     "nav.reserve": "Pesan Meja",
 
     /* hero */
-    "hero.eyebrow": "Timika, Papua — Kafe · Resto · Lounge",
+    "hero.eyebrow": "Vocolaboration Music & Arts, Lounge, Cafe, Bar",
     "hero.sub": "Sebuah gerbang merah di sudut jalan yang tenang di Timika membuka ke halaman yang dirancang untuk makan malam panjang, musik live, dan orang-orang yang membangun budaya kopi Papua versi mereka sendiri.",
     "hero.btnVisit": "Rencanakan kunjungan",
     "hero.btnCafe": "Lihat kafe",
