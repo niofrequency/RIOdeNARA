@@ -108,48 +108,45 @@
 }
 
 /* ===========================================================
-   Scene C1 — Café: horizontal chapter rows, alternating sides,
-   background alternates ink/panel. Full-bleed image side.
+   Café & Resto — one room, three offers. One dining photo,
+   a hairline-ruled list of what happens here, an order CTA,
+   the menu chips, and a plain Natsu strip. Not a chapter clone.
    =========================================================== */
-.chapters .chapter-head{padding:64px 24px 0;}
-.chapter-row{display:grid; grid-template-columns:1fr;}
-.chapter-row .ch-media{aspect-ratio:4/3; overflow:hidden;}
-.chapter-row .ch-media img{width:100%; height:100%; object-fit:cover;}
-.chapter-row .ch-copy{padding:40px 24px 48px;}
-.chapter-row .ch-num{font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:0.95rem; display:block; margin-bottom:12px;}
-.chapter-row .ch-copy h3{font-size:1.5rem; font-weight:600; margin-bottom:12px;}
-.chapter-row .ch-copy p{color:var(--cream-dim); font-size:0.95rem; max-width:440px;}
-.chapter-row.bg-ink{background:var(--ink);}
-.chapter-row.bg-panel{background:var(--panel);}
+.cafe-room{background:var(--ink);}
+.cr-head{padding:64px 24px 0; max-width:640px;}
+.cr-intro{color:var(--cream-dim); font-size:1.02rem; margin-top:14px;}
 
-.chapter-close{padding:8px 24px 64px;}
-.menu-note{display:flex; flex-wrap:wrap; gap:12px 10px; align-items:center; margin-bottom:26px;}
-.menu-note span.lbl{font-size:0.72rem; letter-spacing:0.1em; color:var(--cream-dim); margin-right:6px; text-transform:uppercase;}
-.menu-pill{border:1px solid var(--line); padding:9px 18px; font-size:0.84rem; color:var(--cream-dim); border-radius:999px; background:var(--panel-2);}
+.cr-split{display:grid; grid-template-columns:1fr; margin-top:36px;}
+.cr-photo{aspect-ratio:16/10; overflow:hidden;}
+.cr-photo img{width:100%; height:100%; object-fit:cover;}
+.cr-offers{padding:32px 24px 40px; background:var(--panel); border-top:3px solid var(--red);}
+.cr-list{list-style:none;}
+.cr-list li{padding:18px 0; border-bottom:1px solid var(--line);}
+.cr-list li:first-child{padding-top:0;}
+.cr-list h3{font-size:1.2rem; font-weight:600; margin-bottom:6px;}
+.cr-list p{color:var(--cream-dim); font-size:0.9rem; max-width:34em;}
+.cr-offers .btn{margin-top:28px;}
 
-.natsu-feature{
-  margin-top:40px; padding:24px 26px; max-width:520px;
-  border:1px solid var(--line); border-radius:2px; background:var(--panel-2);
+.cr-foot{padding:36px 24px 64px;}
+.menu-note{display:flex; flex-wrap:wrap; gap:10px 8px; align-items:center;}
+.menu-note span.lbl{font-size:0.7rem; letter-spacing:0.1em; color:var(--cream-dim); margin-right:4px; text-transform:uppercase;}
+.menu-pill{border:1px solid var(--line); padding:7px 15px; font-size:0.78rem; color:var(--cream-dim); border-radius:999px; background:var(--panel-2);}
+
+.natsu-strip{
+  margin-top:22px; padding-top:16px; border-top:1px solid var(--gold);
+  display:flex; flex-wrap:wrap; gap:5px 8px; align-items:baseline;
+  font-size:0.84rem; color:var(--cream-dim); line-height:1.6;
 }
-.natsu-feature .nf-label{font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream-dim);}
-.natsu-feature .nf-name{
-  display:inline-block; margin-top:8px; font-family:'Fraunces',serif; font-weight:600;
-  color:var(--gold); font-size:1.05rem; border-bottom:1px solid transparent;
-}
-.natsu-feature .nf-name:hover{border-color:var(--gold);}
-.natsu-feature .nf-tagline{margin-top:10px;}
-.natsu-feature .nf-tagline-id{font-family:'Fraunces',serif; font-style:italic; color:var(--cream); font-size:0.92rem; display:block;}
-.natsu-feature .nf-tagline-en{color:var(--cream-dim); font-size:0.8rem; display:block; margin-top:3px;}
-.natsu-feature .nf-offer{margin-top:12px; font-size:0.84rem; color:var(--cream-dim); line-height:1.5;}
+.natsu-strip .ns-name{color:var(--gold); font-weight:600; border-bottom:1px solid transparent;}
+.natsu-strip .ns-name:hover{border-color:var(--gold);}
+.natsu-strip .ns-tagline em{font-style:italic; color:var(--cream);}
 
 @media (min-width:861px){
-  .chapters .chapter-head{padding:80px 64px 0;}
-  .chapter-row{grid-template-columns:1fr 1fr; min-height:64vh;}
-  .chapter-row .ch-media{aspect-ratio:auto; height:100%;}
-  .chapter-row .ch-copy{display:flex; flex-direction:column; justify-content:center; padding:60px 72px;}
-  .chapter-row.flip .ch-media{order:2;}
-  .chapter-row.flip .ch-copy{order:1;}
-  .chapter-close{padding:12px 64px 80px;}
+  .cr-head{padding:80px 64px 0;}
+  .cr-split{grid-template-columns:62% 38%; margin-top:44px;}
+  .cr-photo{aspect-ratio:auto;}
+  .cr-offers{padding:48px 56px; display:flex; flex-direction:column; justify-content:center; border-top:0; border-left:3px solid var(--red);}
+  .cr-foot{padding:0 64px 84px;}
 }
 
 /* ===========================================================
@@ -316,8 +313,8 @@
    =========================================================== */
 footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26px 0;}
 .footer-row{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:0 24px;}
-.footer-brand{display:flex; align-items:center; gap:10px;}
-.footer-brand img{height:22px; width:auto; object-fit:contain;}
+.footer-brand{display:flex; align-items:center; gap:14px;}
+.footer-brand img{width:84px; height:auto; object-fit:contain;}
 .footer-text{font-size:0.78rem; color:var(--cream-dim); line-height:1.5;}
 @media (min-width:861px){ .footer-row{padding:0 64px;} }
 </style>
@@ -411,41 +408,37 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
   </div>
 </section>
 
-<!-- Scene C1 — Café: chapter rows -->
-<section class="chapters reveal" id="cafe">
-  <div class="chapter-head">
-    <div class="kicker" data-i18n="cafe.h2" style="font-size:0.72rem;">Café &amp; Resto</div>
-    <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);max-width:640px;" data-i18n="cafe.p">A covered courtyard of teak-root tables and rattan chairs, built for coffee in the morning and a full table at night — with the stage warming up most evenings.</h2>
+<!-- Café & Resto: one room, three offers -->
+<section class="cafe-room reveal" id="cafe">
+  <div class="cr-head">
+    <div class="kicker" data-i18n="cafe.h2">Café &amp; Resto</div>
+    <p class="cr-intro" data-i18n="cafe.p">A covered courtyard of teak-root tables and rattan chairs, built for coffee in the morning and a full table at night — with the stage warming up most evenings.</p>
   </div>
 
-  <div class="chapter-row bg-ink">
-    <div class="ch-media"><img src="images/venue-courtyard.webp" alt="Coffee bar area in the dining courtyard" loading="lazy" decoding="async"></div>
-    <div class="ch-copy">
-      <span class="ch-num">01</span>
-      <h3 data-i18n="cafe.item1.h3">Coffee &amp; bar</h3>
-      <p data-i18n="cafe.item1.p">Papuan-grown coffee, hand-poured by baristas trained on site, alongside tea, mocktails, and a full bar for the evening crowd.</p>
+  <div class="cr-split">
+    <div class="cr-photo">
+      <img src="images/venue-courtyard.webp" alt="Dining courtyard at RiO de NARA, teak-root tables under red lanterns" loading="lazy" decoding="async">
+    </div>
+    <div class="cr-offers">
+      <ul class="cr-list">
+        <li>
+          <h3 data-i18n="cafe.item1.h3">Coffee &amp; bar</h3>
+          <p data-i18n="cafe.item1.p">Papuan-grown coffee, hand-poured by baristas trained on site, alongside tea, mocktails, and a full bar for the evening crowd.</p>
+        </li>
+        <li>
+          <h3 data-i18n="cafe.item2.h3">Resto &amp; shared plates</h3>
+          <p data-i18n="cafe.item2.p">A kitchen built around cold storage and volume, serving everyday plates through to catering for the venue's own events.</p>
+        </li>
+        <li>
+          <h3 data-i18n="cafe.item3.h3">Music &amp; lounge</h3>
+          <p data-i18n="cafe.item3.p">Live sets from the RiO de NARA Band and guest acts, a red-carpet stage for launches, and a courtyard that turns into a lounge after dark.</p>
+        </li>
+      </ul>
+      <a href="order.html" class="btn" data-i18n="cafe.cta">See the full menu &amp; order →</a>
     </div>
   </div>
 
-  <div class="chapter-row bg-panel flip">
-    <div class="ch-media"><img src="images/venue-event.webp" alt="Tables set for dining and catered events" loading="lazy" decoding="async"></div>
-    <div class="ch-copy">
-      <span class="ch-num">02</span>
-      <h3 data-i18n="cafe.item2.h3">Resto &amp; shared plates</h3>
-      <p data-i18n="cafe.item2.p">A kitchen built around cold storage and volume, serving everyday plates through to catering for the venue's own events.</p>
-    </div>
-  </div>
-
-  <div class="chapter-row bg-ink">
-    <div class="ch-media"><img src="images/venue-stage.webp" alt="Live music on the RiO de NARA stage" loading="lazy" decoding="async"></div>
-    <div class="ch-copy">
-      <span class="ch-num">03</span>
-      <h3 data-i18n="cafe.item3.h3">Music &amp; lounge</h3>
-      <p data-i18n="cafe.item3.p">Live sets from the RiO de NARA Band and guest acts, a red-carpet stage for launches, and a courtyard that turns into a lounge after dark.</p>
-    </div>
-  </div>
-
-  <div class="chapter-close bg-panel" style="background:var(--panel);">
+  <div class="cr-foot">
     <div class="menu-note">
       <span class="lbl" data-i18n="cafe.menuLabel">On the menu:</span>
       <span class="menu-pill" data-i18n="cafe.pill1">Coffee &amp; espresso</span>
@@ -454,17 +447,13 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
       <span class="menu-pill" data-i18n="cafe.pill4">Shared plates</span>
       <span class="menu-pill" data-i18n="cafe.pill5">Event catering</span>
     </div>
-    <a href="order.html" class="link-cta" data-i18n="cafe.cta">See the full menu &amp; order →</a>
 
-    <div class="natsu-feature">
-      <div class="nf-label" data-i18n="cafe.natsu.label">In the café, in collaboration with</div>
-      <a href="https://natsucoffee.co.id/" target="_blank" rel="noopener" class="nf-name">Natsu — Japanese Ice Cream &amp; Coffee</a>
-      <div class="nf-tagline">
-        <span class="nf-tagline-id">"Bukan sekadar minum kopi. Ini perjalanan ke Jepang."</span>
-        <span class="nf-tagline-en">More than a coffee break — a trip to Japan.</span>
-      </div>
-      <div class="nf-offer" data-i18n="cafe.natsu.offer">Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.</div>
-    </div>
+    <p class="natsu-strip">
+      <span data-i18n="cafe.natsu.label">In the café, in collaboration with</span>
+      <a href="https://natsucoffee.co.id/" target="_blank" rel="noopener" class="ns-name">Natsu — Japanese Ice Cream &amp; Coffee</a>
+      <span class="ns-tagline">— <em>"Bukan sekadar minum kopi. Ini perjalanan ke Jepang."</em> More than a coffee break, a trip to Japan.</span>
+      <span data-i18n="cafe.natsu.offer">Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.</span>
+    </p>
   </div>
 </section>
 
@@ -643,9 +632,9 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 <footer class="site">
   <div class="footer-row">
     <div class="footer-brand">
-      <img src="images/logo-mark.webp" alt="">
+      <img src="images/logo-full.webp" alt="RiO de NARA — Vocollaboration Music &amp; Arts, Lounge, Cafe, Bar">
       <div class="footer-text">
-        <div data-i18n="footer.left">RiO de NARA — Café, Resto &amp; Lounge, Timika, Papua</div>
+        <div data-i18n="footer.left">Café, Resto &amp; Lounge, Timika, Papua</div>
       </div>
     </div>
     <div class="footer-text" data-i18n="footer.right">Official Store, Persipura Jayapura FC</div>
