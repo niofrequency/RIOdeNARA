@@ -139,7 +139,7 @@ window.RDN_I18N = {
     "visit.reserveCta": "Reserve a table →",
 
     /* footer */
-    "footer.left": "RiO de NARA — Café, Resto & Lounge, Timika, Papua",
+    "footer.left": "Café, Resto & Lounge, Timika, Papua",
     "footer.right": "Official Store, Persipura Jayapura FC",
 
     /* order page */
@@ -316,7 +316,7 @@ window.RDN_I18N = {
     "visit.reserveCta": "Pesan meja →",
 
     /* footer */
-    "footer.left": "RiO de NARA — Kafe, Resto & Lounge, Timika, Papua",
+    "footer.left": "Kafe, Resto & Lounge, Timika, Papua",
     "footer.right": "Toko Resmi, Persipura Jayapura FC",
 
     /* order page */

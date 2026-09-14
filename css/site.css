@@ -140,8 +140,11 @@ header.site.scrolled{
   border-bottom-color:var(--line);
 }
 .brandmark{display:flex;align-items:center;gap:12px;flex-shrink:0;}
-.brandmark img{height:34px;width:auto;object-fit:contain;}
+.brandmark img{height:38px;width:auto;object-fit:contain;}
 .brandmark span{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;letter-spacing:0.01em;white-space:nowrap;}
+@media (min-width:861px){
+  .brandmark img{height:48px;}
+}
 
 .header-mid{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:flex-end;flex:1;}
 nav.links{display:flex;gap:24px;font-size:0.82rem;letter-spacing:0.03em;}
