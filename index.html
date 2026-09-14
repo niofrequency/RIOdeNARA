@@ -127,6 +127,21 @@
 .menu-note span.lbl{font-size:0.72rem; letter-spacing:0.1em; color:var(--cream-dim); margin-right:6px; text-transform:uppercase;}
 .menu-pill{border:1px solid var(--line); padding:9px 18px; font-size:0.84rem; color:var(--cream-dim); border-radius:999px; background:var(--panel-2);}
 
+.natsu-feature{
+  margin-top:40px; padding:24px 26px; max-width:520px;
+  border:1px solid var(--line); border-radius:2px; background:var(--panel-2);
+}
+.natsu-feature .nf-label{font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream-dim);}
+.natsu-feature .nf-name{
+  display:inline-block; margin-top:8px; font-family:'Fraunces',serif; font-weight:600;
+  color:var(--gold); font-size:1.05rem; border-bottom:1px solid transparent;
+}
+.natsu-feature .nf-name:hover{border-color:var(--gold);}
+.natsu-feature .nf-tagline{margin-top:10px;}
+.natsu-feature .nf-tagline-id{font-family:'Fraunces',serif; font-style:italic; color:var(--cream); font-size:0.92rem; display:block;}
+.natsu-feature .nf-tagline-en{color:var(--cream-dim); font-size:0.8rem; display:block; margin-top:3px;}
+.natsu-feature .nf-offer{margin-top:12px; font-size:0.84rem; color:var(--cream-dim); line-height:1.5;}
+
 @media (min-width:861px){
   .chapters .chapter-head{padding:80px 64px 0;}
   .chapter-row{grid-template-columns:1fr 1fr; min-height:64vh;}
@@ -440,6 +455,16 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
       <span class="menu-pill" data-i18n="cafe.pill5">Event catering</span>
     </div>
     <a href="order.html" class="link-cta" data-i18n="cafe.cta">See the full menu &amp; order →</a>
+
+    <div class="natsu-feature">
+      <div class="nf-label" data-i18n="cafe.natsu.label">In the café, in collaboration with</div>
+      <a href="https://natsucoffee.co.id/" target="_blank" rel="noopener" class="nf-name">Natsu — Japanese Ice Cream &amp; Coffee</a>
+      <div class="nf-tagline">
+        <span class="nf-tagline-id">"Bukan sekadar minum kopi. Ini perjalanan ke Jepang."</span>
+        <span class="nf-tagline-en">More than a coffee break — a trip to Japan.</span>
+      </div>
+      <div class="nf-offer" data-i18n="cafe.natsu.offer">Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.</div>
+    </div>
   </div>
 </section>
 
