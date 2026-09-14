@@ -19,7 +19,7 @@
 header.top{
   position:sticky; top:0; z-index:20;
   display:flex; align-items:center; justify-content:space-between;
-  padding:16px 24px; background:rgba(20,17,14,0.96); backdrop-filter:blur(8px);
+  padding:16px 24px; background:var(--ink);
   border-bottom:1px solid var(--line);
 }
 .top-actions{display:flex;align-items:center;gap:14px;}
@@ -59,7 +59,7 @@ main{padding:48px 0 0;}
 
 .cart-panel{
   position:sticky; top:90px;
-  background:rgba(23,21,18,0.88); backdrop-filter:blur(6px);
+  background:var(--panel);
   border:1px solid var(--line); border-radius:2px;
   padding:28px 26px;
 }
@@ -78,7 +78,7 @@ main{padding:48px 0 0;}
 .mobile-cart-bar{
   display:none;
   position:fixed; left:0; right:0; bottom:0; z-index:40;
-  background:rgba(20,17,14,0.97); backdrop-filter:blur(8px);
+  background:var(--ink);
   border-top:1px solid var(--line);
   padding:14px 20px; align-items:center; justify-content:space-between; gap:14px;
   box-shadow:0 -12px 30px rgba(0,0,0,0.35);
@@ -124,7 +124,7 @@ main{padding:48px 0 0;}
 
 <header class="top">
   <a href="index.html" class="brandmark">
-    <img src="images/logo-mark.webp" alt="RiO de NARA">
+    <img src="images/logo-lockup.webp" alt="RiO de NARA">
   </a>
   <div class="top-actions">
     <div class="lang-toggle" role="group" aria-label="Language / Bahasa">

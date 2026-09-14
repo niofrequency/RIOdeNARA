@@ -14,17 +14,15 @@
  */
 
 :root{
-  --ink:#171512;
-  --panel:#1e1a16;
+  --ink:#0c0b0a;
+  --panel:#1a1612;
   --panel-2:#221d18;
   --red:#c22a17;
   --red-deep:#7e1a0d;
-  --gold:#eecf6a;
+  --gold:#e8c96a;
   --cream:#f3ecdd;
   --cream-dim:#cfc4ac;
-  --tile-black:#1c1815;
-  --line:rgba(238,207,106,0.22);
-  --fog:rgba(243,236,221,0.06);
+  --line:rgba(232,201,106,0.22);
   --shadow:0 24px 60px rgba(0,0,0,0.5);
   --green:#5fb46e;
   --blue:#5b9bd5;
@@ -73,54 +71,16 @@ button,input,select,textarea{font-family:inherit;}
   text-transform:uppercase; font-weight:500;
 }
 
-/* --- diamond tile motif: used as an accent stripe AND as a large field --- */
-.tile-band{
-  height:30px;
-  background-image:
-    linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%),
-    linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%);
-  background-size:30px 30px;
-  background-position:0 0, 15px 15px;
-  background-color:var(--tile-black);
-}
-.tile-band.mini{height:12px;background-size:12px 12px;background-position:0 0, 6px 6px;}
-
-.tile-field{
-  background-image:
-    linear-gradient(45deg, var(--red-deep) 25%, transparent 25%, transparent 75%, var(--red-deep) 75%),
-    linear-gradient(45deg, var(--red-deep) 25%, transparent 25%, transparent 75%, var(--red-deep) 75%);
-  background-size:84px 84px;
-  background-position:0 0, 42px 42px;
-  background-color:var(--tile-black);
-  position:relative;
-}
-.tile-field::before{
-  content:''; position:absolute; inset:0; background:rgba(23,21,18,0.72);
-}
-
-/* --- signboard: type/content hung on a frame --- */
+/* --- signboard: type/content on a solid timber board. No glass, no blur. --- */
 .signboard{
-  background:rgba(23,21,18,0.86);
-  backdrop-filter:blur(6px);
+  background:var(--panel);
   border:1px solid var(--line);
   box-shadow:var(--shadow);
   border-radius:2px;
 }
 .signboard.on-cream{background:var(--cream); color:var(--ink); border-color:transparent;}
 .signboard.on-cream h1,.signboard.on-cream h2,.signboard.on-cream h3{color:var(--ink);}
-.signboard.solid{background:var(--panel); backdrop-filter:none;}
-
-/* --- gate posts: the whole site stands inside the gate on wide screens.
-   Fixed overlay only (no body padding), so full-bleed photos still run
-   true edge-to-edge and simply pass behind the posts. --- */
-@media (min-width:1201px){
-  body::before,body::after{
-    content:''; position:fixed; top:0; bottom:0; width:9px; background:var(--red);
-    z-index:90; pointer-events:none;
-  }
-  body::before{left:0;}
-  body::after{right:0;}
-}
+.signboard.solid{background:var(--panel);}
 
 /* =========================================================
    Header / nav
@@ -134,16 +94,15 @@ header.site{
   border-bottom:1px solid transparent;
 }
 header.site.scrolled{
-  background:rgba(20,17,14,0.94);
-  backdrop-filter:blur(8px);
+  background:var(--ink);
   padding:14px 40px;
-  border-bottom-color:var(--line);
+  border-bottom-color:var(--gold);
 }
 .brandmark{display:flex;align-items:center;gap:12px;flex-shrink:0;}
-.brandmark img{height:38px;width:auto;object-fit:contain;}
+.brandmark img{height:36px;width:auto;object-fit:contain;}
 .brandmark span{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;letter-spacing:0.01em;white-space:nowrap;}
 @media (min-width:861px){
-  .brandmark img{height:48px;}
+  .brandmark img{height:44px;}
 }
 
 .header-mid{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:flex-end;flex:1;}
@@ -268,7 +227,7 @@ nav.links a:hover,nav.links a:focus-visible{opacity:1;color:var(--gold);}
 .notice::before{content:'✦'; color:var(--gold); flex-shrink:0;}
 
 /* --- reveal-on-scroll: opacity only, once --- */
-.reveal{opacity:0; transition:opacity .28s ease;}
+.reveal{opacity:0; transition:opacity .2s ease;}
 .reveal.in-view{opacity:1;}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1; transition:none;}
@@ -294,13 +253,6 @@ nav.links a:hover,nav.links a:focus-visible{opacity:1;color:var(--gold);}
     overflow-y:auto;
   }
   .mobile-menu.open{transform:translateY(0); opacity:1;}
-  .mobile-menu .drawer-tiles{
-    height:14px; margin:0 -32px 30px;
-    background-image:
-      linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%),
-      linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%);
-    background-size:14px 14px; background-position:0 0, 7px 7px; background-color:var(--tile-black);
-  }
   .mobile-menu a{
     display:block; padding:15px 0; font-size:1.4rem;
     border-bottom:1px solid var(--line);
