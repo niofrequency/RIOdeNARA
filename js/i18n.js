@@ -32,7 +32,7 @@ window.RDN_I18N = {
 
     /* vision */
     "vision.kicker": "Vision & Mission",
-    "vision.h2": "Not just a café. A workshop for Papuan entrepreneurs, run in public.",
+    "vision.h2": "To establish RiO de NARA as a sustainable community-based enterprise model that cultivates independent and professional Papuan small business owners.",
     "vision.p": "Every table, every cup of coffee, and every band on our stage is part of the same idea: a working café and lounge that doubles as a training ground, where the people who run the room are learning to run their own. RiO de NARA is the flagship of a wider House of Creativity for Papuan small entrepreneurs — a project growing, unit by unit, into its own community of independent businesses.",
 
     /* cafe */
@@ -207,7 +207,7 @@ window.RDN_I18N = {
 
     /* vision */
     "vision.kicker": "Visi & Misi",
-    "vision.h2": "Bukan sekadar kafe. Sebuah lokakarya bagi pengusaha Papua, yang berjalan secara terbuka.",
+    "vision.h2": "Menjadikan RiO de NARA sebagai model sustainable community-based enterprise yang melahirkan pengusaha-pengusaha kecil Papua yang mandiri dan profesional.",
     "vision.p": "Setiap meja, setiap cangkir kopi, dan setiap band yang tampil di panggung kami adalah bagian dari satu ide yang sama: kafe dan lounge yang berfungsi ganda sebagai tempat pelatihan, di mana orang-orang yang menjalankan ruang ini sedang belajar menjalankan usaha mereka sendiri. RiO de NARA adalah unit utama dari Rumah Kreativitas yang lebih luas untuk pengusaha kecil Papua — sebuah proyek yang terus tumbuh, unit demi unit, menjadi komunitas bisnis mandiri.",
 
     /* cafe */

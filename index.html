@@ -64,9 +64,7 @@
 }
 .hero-board-wrap{background:var(--ink);}
 .hero-board{padding:40px 24px 46px; max-width:640px; margin:0 auto;}
-.hero-board .kicker{margin-bottom:16px;}
-.hero-board h1{font-size:clamp(2.3rem,10vw,3rem); line-height:0.98; margin-bottom:18px;}
-.hero-board h1 em{font-style:italic; font-weight:500; color:var(--gold);}
+.hero-logo-img{width:100%; max-width:300px; height:auto; margin-bottom:22px;}
 .hero-line{color:var(--cream-dim); font-size:1rem; max-width:480px; margin-bottom:28px;}
 .hero-actions{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
 .hero-loc{margin-top:22px; font-size:0.8rem; color:var(--cream-dim); letter-spacing:0.02em;}
@@ -82,7 +80,7 @@
     padding:8vh 40px 0;
   }
   .hero-board{padding:52px 56px; max-width:600px;}
-  .hero-board h1{font-size:clamp(2.6rem,6vw,4.6rem);}
+  .hero-logo-img{max-width:420px; margin-bottom:26px;}
 }
 
 /* ===========================================================
@@ -304,7 +302,7 @@
 footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26px 0;}
 .footer-row{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:0 24px;}
 .footer-brand{display:flex; align-items:center; gap:10px;}
-.footer-brand img{height:24px; width:24px; border-radius:50%; object-fit:cover;}
+.footer-brand img{height:22px; width:auto; object-fit:contain;}
 .footer-text{font-size:0.78rem; color:var(--cream-dim); line-height:1.5;}
 @media (min-width:861px){ .footer-row{padding:0 64px;} }
 </style>
@@ -315,8 +313,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 
 <header class="site" id="siteHeader">
   <div class="brandmark">
-    <img src="images/logo.webp" width="34" height="34" alt="RiO de NARA logo — a canoe of paddlers">
-    <span>RiO de NARA</span>
+    <img src="images/logo-mark.webp" alt="RiO de NARA">
   </div>
 
   <div class="header-mid">
@@ -370,8 +367,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
   </div>
   <div class="hero-board-wrap">
     <div class="hero-board signboard">
-      <div class="kicker" data-i18n="hero.eyebrow">Timika, Papua — Café · Resto · Lounge</div>
-      <h1>RiO de <em>NARA</em></h1>
+      <img src="images/logo-full.webp" alt="RiO de NARA — Vocollaboration Music &amp; Arts, Lounge, Cafe, Bar" class="hero-logo-img">
       <p class="hero-line" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
       <div class="hero-actions">
         <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
@@ -569,7 +565,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
     <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);max-width:600px;" data-i18n="partners.p">RiO de NARA works alongside local brands, teams, and creative talent to build out its store, its stage, and its tech.</h2>
     <div class="partner-strip">
       <div class="partner-pill featured"><strong>Persipura Jayapura</strong> — <span data-i18n="partners.official">official store</span></div>
-      <div class="partner-pill"><strong>Natsu Japanese Ice Cream</strong></div>
+      <a class="partner-pill" href="https://natsucoffee.co.id/" target="_blank" rel="noopener"><strong>Natsu Japanese Ice Cream</strong></a>
       <div class="partner-pill"><strong>Mekari Talent</strong></div>
       <div class="partner-pill"><strong>The Karaka's</strong></div>
       <div class="partner-pill"><strong>Tongoi Papua</strong></div>
@@ -622,7 +618,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 <footer class="site">
   <div class="footer-row">
     <div class="footer-brand">
-      <img src="images/logo.webp" alt="" width="24" height="24">
+      <img src="images/logo-mark.webp" alt="">
       <div class="footer-text">
         <div data-i18n="footer.left">RiO de NARA — Café, Resto &amp; Lounge, Timika, Papua</div>
       </div>
