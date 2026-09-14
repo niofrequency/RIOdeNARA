@@ -51,6 +51,8 @@ window.RDN_I18N = {
     "cafe.pill4": "Shared plates",
     "cafe.pill5": "Event catering",
     "cafe.cta": "See the full menu & order →",
+    "cafe.natsu.label": "In the café, in collaboration with",
+    "cafe.natsu.offer": "Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.",
 
     /* venue */
     "venue.h2": "The venue",
@@ -226,6 +228,8 @@ window.RDN_I18N = {
     "cafe.pill4": "Hidangan berbagi",
     "cafe.pill5": "Katering acara",
     "cafe.cta": "Lihat menu lengkap & pesan →",
+    "cafe.natsu.label": "Di kafe kami, berkolaborasi dengan",
+    "cafe.natsu.offer": "Soft serve premium, kopi signature, dan donat artisan — sudut Natsu di dalam RiO de NARA.",
 
     /* venue */
     "venue.h2": "Tempatnya",
