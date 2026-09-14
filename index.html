@@ -69,8 +69,7 @@
   font-family:'Fraunces',serif; font-style:italic; color:var(--gold);
   font-size:0.95rem; line-height:1.4; margin-bottom:18px; max-width:420px;
 }
-.hero-name{font-size:clamp(2.2rem,4vw,3.4rem); line-height:1.05; margin-bottom:20px;}
-.hero-name em{font-style:italic; color:var(--gold);}
+.hero-logo-img{width:100%; max-width:300px; height:auto; margin-bottom:22px;}
 .hero-line{color:var(--cream-dim); font-size:1rem; max-width:480px; margin-bottom:28px;}
 .hero-actions{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
 .hero-loc{margin-top:22px; font-size:0.8rem; color:var(--cream-dim); letter-spacing:0.02em;}
@@ -88,6 +87,7 @@
     order:0; display:flex; align-items:center;
   }
   .hero-board{padding:0 48px; max-width:none; margin:0;}
+  .hero-logo-img{max-width:340px; margin-bottom:26px;}
 }
 
 /* ===========================================================
@@ -388,7 +388,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
   <div class="hero-board-wrap">
     <div class="hero-board">
       <div class="hero-kicker" data-i18n="hero.eyebrow">Vocolaboration Music &amp; Arts, Lounge, Cafe, Bar</div>
-      <h1 class="hero-name display">RiO de <em>NARA</em></h1>
+      <img src="images/logo-lockup.webp" alt="RiO de NARA" class="hero-logo-img">
       <p class="hero-line" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
       <div class="hero-actions">
         <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
