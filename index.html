@@ -48,39 +48,46 @@
 
 <style>
 /* ===========================================================
-   Scene A — Framed hero: photo, then a signboard (not type on
-   the photo). Mobile: signboard sits BELOW the photo. Desktop:
-   signboard is inset in the gate opening, over the photo.
+   Hero — not a card floating on the photo. Mobile: photo, then
+   a solid ink board underneath. Desktop: 38% ink board / 4px
+   red beam / 62% photo, side by side.
    =========================================================== */
 .hero{display:flex; flex-direction:column;}
-.hero-photo{position:relative; height:64vh; min-height:400px; overflow:hidden;}
+.hero-photo{position:relative; height:58vh; min-height:340px; overflow:hidden; order:0;}
 .hero-photo img{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-  object-position:50% 38%; transform:scale(1.06);
+  object-position:50% 38%;
 }
 .hero-photo::after{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(10,9,8,0.04) 55%, rgba(10,9,8,0.55) 100%);
+  background:linear-gradient(180deg, rgba(10,9,8,0.04) 55%, rgba(10,9,8,0.4) 100%);
 }
-.hero-board-wrap{background:var(--ink);}
+.hero-beam{display:none;}
+.hero-board-wrap{background:var(--ink); order:1;}
 .hero-board{padding:40px 24px 46px; max-width:640px; margin:0 auto;}
-.hero-logo-img{width:100%; max-width:300px; height:auto; margin-bottom:22px;}
+.hero-kicker{
+  font-family:'Fraunces',serif; font-style:italic; color:var(--gold);
+  font-size:0.95rem; line-height:1.4; margin-bottom:18px; max-width:420px;
+}
+.hero-name{font-size:clamp(2.2rem,4vw,3.4rem); line-height:1.05; margin-bottom:20px;}
+.hero-name em{font-style:italic; color:var(--gold);}
 .hero-line{color:var(--cream-dim); font-size:1rem; max-width:480px; margin-bottom:28px;}
 .hero-actions{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
 .hero-loc{margin-top:22px; font-size:0.8rem; color:var(--cream-dim); letter-spacing:0.02em;}
 
 @media (min-width:861px){
-  .hero{display:block; position:relative; height:100vh; min-height:680px;}
-  .hero-photo{position:absolute; inset:0; height:100%;}
-  .hero-photo img{object-position:50% 42%; transform:scale(1.12);}
-  .hero-photo::after{background:linear-gradient(180deg, rgba(10,9,8,0.05) 0%, rgba(10,9,8,0.2) 60%, rgba(10,9,8,0.5) 100%);}
-  .hero-board-wrap{
-    position:absolute; inset:0; background:none;
-    display:flex; align-items:center; justify-content:center;
-    padding:8vh 40px 0;
+  .hero{
+    display:grid; grid-template-columns:calc(38% - 2px) 4px calc(62% - 2px);
+    min-height:88vh;
   }
-  .hero-board{padding:52px 56px; max-width:600px;}
-  .hero-logo-img{max-width:420px; margin-bottom:26px;}
+  .hero-photo{order:2; height:100%; min-height:0;}
+  .hero-photo img{object-position:50% 42%;}
+  .hero-photo::after{background:linear-gradient(180deg, rgba(10,9,8,0.05) 0%, rgba(10,9,8,0.15) 60%, rgba(10,9,8,0.35) 100%);}
+  .hero-beam{display:block; order:1; background:var(--red);}
+  .hero-board-wrap{
+    order:0; display:flex; align-items:center;
+  }
+  .hero-board{padding:0 48px; max-width:none; margin:0;}
 }
 
 /* ===========================================================
@@ -102,7 +109,7 @@
 .vs-copy p{color:var(--cream-dim); font-size:0.96rem; max-width:460px;}
 
 @media (min-width:861px){
-  .vs-grid{grid-template-columns:42% 58%;}
+  .vs-grid{grid-template-columns:1fr 1fr;}
   .vs-media{aspect-ratio:auto; height:auto;}
   .vs-copy{display:flex; flex-direction:column; justify-content:center; padding:64px 72px 64px 64px;}
 }
@@ -283,9 +290,10 @@
 @media (min-width:861px){ .partners-scene .wrap{padding-left:64px; padding-right:64px;} }
 
 /* ===========================================================
-   Visit — diamond-tile field + signboard panel. No red slab.
+   Visit — plain timber field + signboard panel. No red slab,
+   no fake tile floor.
    =========================================================== */
-.visit-scene{position:relative; padding:70px 0 60px;}
+.visit-scene{position:relative; padding:70px 0 60px; background:var(--panel);}
 .visit-inner{position:relative; z-index:2; padding-left:24px; padding-right:24px;}
 .visit-panel{padding:36px 26px 40px;}
 .visit-panel h2{font-size:clamp(1.8rem,5vw,2.6rem); line-height:1.08; max-width:520px;}
@@ -311,7 +319,7 @@
 /* ===========================================================
    Footer
    =========================================================== */
-footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26px 0;}
+footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26px 0;}
 .footer-row{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:0 24px;}
 .footer-brand{display:flex; align-items:center; gap:14px;}
 .footer-brand img{width:84px; height:auto; object-fit:contain;}
@@ -325,7 +333,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 
 <header class="site" id="siteHeader">
   <div class="brandmark">
-    <img src="images/logo-mark.webp" alt="RiO de NARA">
+    <img src="images/logo-lockup.webp" alt="RiO de NARA">
   </div>
 
   <div class="header-mid">
@@ -351,7 +359,6 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-  <div class="drawer-tiles"></div>
   <div class="mobile-cta">
     <a href="reserve.html" class="btn-sm solid" data-i18n="nav.reserve">Reserve a Table</a>
     <a href="order.html" class="btn-sm ghost" data-i18n="nav.order">Order Online</a>
@@ -372,14 +379,16 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 
 <main id="main">
 
-<!-- Scene A — Framed hero -->
+<!-- Hero: mobile photo-then-board, desktop 38/62 split with a red beam -->
 <section class="hero">
   <div class="hero-photo">
     <img src="images/hero-gate.webp" alt="The red gate of RiO de NARA, opening onto its lantern-lit courtyard" fetchpriority="high" loading="eager" decoding="async">
   </div>
+  <div class="hero-beam"></div>
   <div class="hero-board-wrap">
-    <div class="hero-board signboard">
-      <img src="images/logo-full.webp" alt="RiO de NARA — Vocollaboration Music &amp; Arts, Lounge, Cafe, Bar" class="hero-logo-img">
+    <div class="hero-board">
+      <div class="hero-kicker" data-i18n="hero.eyebrow">Vocolaboration Music &amp; Arts, Lounge, Cafe, Bar</div>
+      <h1 class="hero-name display">RiO de <em>NARA</em></h1>
       <p class="hero-line" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
       <div class="hero-actions">
         <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
@@ -389,8 +398,6 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
     </div>
   </div>
 </section>
-
-<div class="tile-band"></div>
 
 <!-- Scene B — Split story: Vision -->
 <section class="vision-scene reveal" id="vision">
@@ -588,8 +595,8 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
   </div>
 </section>
 
-<!-- Visit: diamond-tile field + signboard panel -->
-<section class="visit-scene tile-field reveal" id="visit">
+<!-- Visit: plain timber field + signboard panel. No red slab. -->
+<section class="visit-scene reveal" id="visit">
   <div class="visit-inner">
     <div class="visit-panel signboard">
       <h2 data-i18n="visit.h2">Come sit under the gate.</h2>
@@ -632,7 +639,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--line); padding:26p
 <footer class="site">
   <div class="footer-row">
     <div class="footer-brand">
-      <img src="images/logo-full.webp" alt="RiO de NARA — Vocollaboration Music &amp; Arts, Lounge, Cafe, Bar">
+      <img src="images/logo-lockup-full.webp" alt="RiO de NARA — Vocollaboration Music &amp; Arts, Lounge, Cafe, Bar">
       <div class="footer-text">
         <div data-i18n="footer.left">Café, Resto &amp; Lounge, Timika, Papua</div>
       </div>
