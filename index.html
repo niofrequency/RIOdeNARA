@@ -139,14 +139,20 @@
 .menu-note span.lbl{font-size:0.7rem; letter-spacing:0.1em; color:var(--cream-dim); margin-right:4px; text-transform:uppercase;}
 .menu-pill{border:1px solid var(--line); padding:7px 15px; font-size:0.78rem; color:var(--cream-dim); border-radius:999px; background:var(--panel-2);}
 
-.natsu-strip{
-  margin-top:22px; padding-top:16px; border-top:1px solid var(--gold);
-  display:flex; flex-wrap:wrap; gap:5px 8px; align-items:baseline;
-  font-size:0.84rem; color:var(--cream-dim); line-height:1.6;
+.natsu-card{
+  margin-top:26px; display:flex; flex-direction:column; gap:6px;
+  padding:20px 22px; border:1px solid var(--gold); border-left:3px solid var(--gold);
+  background:rgba(232,201,106,0.07); border-radius:2px;
+  transition:background .2s ease;
 }
-.natsu-strip .ns-name{color:var(--gold); font-weight:600; border-bottom:1px solid transparent;}
-.natsu-strip .ns-name:hover{border-color:var(--gold);}
-.natsu-strip .ns-tagline em{font-style:italic; color:var(--cream);}
+.natsu-card:hover{background:rgba(232,201,106,0.13);}
+.natsu-card-label{font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--cream-dim);}
+.natsu-card-name{font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; color:var(--gold);}
+.natsu-card-name .dim{font-family:'Work Sans',sans-serif; font-weight:400; font-size:0.85rem; color:var(--cream-dim);}
+.natsu-card-tagline{font-size:0.86rem; color:var(--cream-dim); line-height:1.5;}
+.natsu-card-tagline em{font-style:italic; color:var(--cream);}
+.natsu-card-offer{font-size:0.86rem; color:var(--cream-dim); line-height:1.5;}
+.natsu-card-link{margin-top:4px; font-size:0.78rem; color:var(--gold); text-decoration:underline;}
 
 @media (min-width:861px){
   .cr-head{padding:80px 64px 0;}
@@ -297,7 +303,7 @@
 .visit-inner{position:relative; z-index:2; padding-left:24px; padding-right:24px;}
 .visit-panel{padding:36px 26px 40px;}
 .visit-panel h2{font-size:clamp(1.8rem,5vw,2.6rem); line-height:1.08; max-width:520px;}
-.visit-cta{margin-top:24px;}
+.visit-cta{margin-top:24px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
 .visit-facts{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:40px; padding-top:32px; border-top:1px solid var(--line);}
 .visit-facts .fact h5{font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;}
 .visit-facts .fact p,.visit-facts .fact a{font-size:0.95rem; color:var(--cream); line-height:1.5;}
@@ -333,7 +339,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
 
 <header class="site" id="siteHeader">
   <div class="brandmark">
-    <img src="images/logo-lockup.webp" alt="RiO de NARA">
+    <img src="images/logo-lockup.webp" alt="RiO de NARA" width="500" height="196">
   </div>
 
   <div class="header-mid">
@@ -382,17 +388,17 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
 <!-- Hero: mobile photo-then-board, desktop 38/62 split with a red beam -->
 <section class="hero">
   <div class="hero-photo">
-    <img src="images/hero-gate.webp" alt="The red gate of RiO de NARA, opening onto its lantern-lit courtyard" fetchpriority="high" loading="eager" decoding="async">
+    <img src="images/hero-gate.webp" alt="The red gate of RiO de NARA, opening onto its lantern-lit courtyard" width="960" height="1280" fetchpriority="high" loading="eager" decoding="async">
   </div>
   <div class="hero-beam"></div>
   <div class="hero-board-wrap">
     <div class="hero-board">
       <div class="hero-kicker" data-i18n="hero.eyebrow">Vocolaboration Music &amp; Arts, Lounge, Cafe, Bar</div>
-      <img src="images/logo-lockup.webp" alt="RiO de NARA" class="hero-logo-img">
+      <img src="images/logo-lockup.webp" alt="RiO de NARA" class="hero-logo-img" width="500" height="196">
       <p class="hero-line" data-i18n="hero.sub">A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.</p>
       <div class="hero-actions">
-        <a href="order.html" class="btn" data-i18n="hero.btnOrder">Order online</a>
-        <a href="#visit" class="link-cta on-ink" data-i18n="hero.btnVisit">Plan your visit</a>
+        <a href="reserve.html" class="btn" data-i18n="hero.btnReserve">Reserve a table</a>
+        <a href="order.html" class="link-cta on-ink" data-i18n="hero.btnOrder">Order online</a>
       </div>
       <div class="hero-loc" data-i18n="hero.loc">Open daily &nbsp;·&nbsp; Timika, Papua, Indonesia</div>
     </div>
@@ -403,7 +409,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
 <section class="vision-scene reveal" id="vision">
   <div class="vs-grid">
     <div class="vs-media">
-      <img src="images/vision-courtyard.webp" alt="Dining courtyard at RiO de NARA with a root-slab table under red lanterns" loading="lazy" decoding="async">
+      <img src="images/vision-courtyard.webp" alt="Dining courtyard at RiO de NARA with a root-slab table under red lanterns" width="1000" height="1200" loading="lazy" decoding="async">
     </div>
     <div class="vs-copy">
       <div class="kicker" data-i18n="vision.kicker">Vision &amp; Mission</div>
@@ -455,12 +461,13 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
       <span class="menu-pill" data-i18n="cafe.pill5">Event catering</span>
     </div>
 
-    <p class="natsu-strip">
-      <span data-i18n="cafe.natsu.label">In the café, in collaboration with</span>
-      <a href="https://natsucoffee.co.id/" target="_blank" rel="noopener" class="ns-name">Natsu — Japanese Ice Cream &amp; Coffee</a>
-      <span class="ns-tagline">— <em>"Bukan sekadar minum kopi. Ini perjalanan ke Jepang."</em> More than a coffee break, a trip to Japan.</span>
-      <span data-i18n="cafe.natsu.offer">Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.</span>
-    </p>
+    <a class="natsu-card" href="https://natsucoffee.co.id/" target="_blank" rel="noopener">
+      <span class="natsu-card-label" data-i18n="cafe.natsu.label">In the café, in collaboration with</span>
+      <span class="natsu-card-name">Natsu <span class="dim">— Japanese Ice Cream &amp; Coffee</span></span>
+      <span class="natsu-card-tagline"><em>&ldquo;Bukan sekadar minum kopi. Ini perjalanan ke Jepang.&rdquo;</em> More than a coffee break, a trip to Japan.</span>
+      <span class="natsu-card-offer" data-i18n="cafe.natsu.offer">Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.</span>
+      <span class="natsu-card-link" data-i18n="cafe.natsu.link">Visit natsucoffee.co.id →</span>
+    </a>
   </div>
 </section>
 
@@ -600,7 +607,10 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
   <div class="visit-inner">
     <div class="visit-panel signboard">
       <h2 data-i18n="visit.h2">Come sit under the gate.</h2>
-      <div class="visit-cta"><a href="reserve.html" class="btn" data-i18n="visit.reserveCta">Reserve a table →</a></div>
+      <div class="visit-cta">
+        <a href="reserve.html" class="btn" data-i18n="visit.reserveCta">Reserve a table →</a>
+        <a href="order.html" class="link-cta on-ink" data-i18n="hero.btnOrder">Order online</a>
+      </div>
       <div class="visit-facts">
         <div class="fact">
           <h5 data-i18n="visit.loc.label">Location</h5>
@@ -617,6 +627,7 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
         <div class="fact">
           <h5 data-i18n="visit.follow.label">Follow along</h5>
           <p><a href="https://www.instagram.com/riodenara" target="_blank" rel="noopener">@riodenara</a></p>
+          <p id="visitWhatsapp" hidden><a id="visitWhatsappLink" href="#" target="_blank" rel="noopener"></a></p>
         </div>
       </div>
     </div>
@@ -650,8 +661,25 @@ footer.site{background:var(--ink); border-top:1px solid var(--gold); padding:26p
 
 <script src="js/i18n.js"></script>
 <script src="js/reveal.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/firebase-config.js"></script>
 <script>
 (function(){
+  /* Visit section: show a WhatsApp link only once an owner has set a
+     real number in js/firebase-config.js (reuses the same wa.me
+     formatting as Order/Reserve — never invents a number). */
+  var waNumber = window.RDN_WHATSAPP_NUMBER || '';
+  if(waNumber && waNumber.indexOf('REPLACE_WITH') !== 0){
+    var digits = window.RDN_normalizePhone ? window.RDN_normalizePhone(waNumber) : waNumber.replace(/[^0-9]/g, '');
+    var waWrap = document.getElementById('visitWhatsapp');
+    var waLink = document.getElementById('visitWhatsappLink');
+    if(digits && waWrap && waLink){
+      waLink.href = 'https://wa.me/' + digits;
+      waLink.textContent = '+' + digits;
+      waWrap.hidden = false;
+    }
+  }
+
   var h = document.getElementById('siteHeader');
   window.addEventListener('scroll', function(){
     if(window.scrollY > 40){ h.classList.add('scrolled'); } else { h.classList.remove('scrolled'); }

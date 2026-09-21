@@ -25,6 +25,7 @@ window.RDN_I18N = {
     /* hero */
     "hero.eyebrow": "Vocolaboration Music & Arts, Lounge, Cafe, Bar",
     "hero.sub": "A red gate off a quiet Timika street opens onto a courtyard built for long dinners, live music, and the people making Papuan coffee culture their own.",
+    "hero.btnReserve": "Reserve a table",
     "hero.btnVisit": "Plan your visit",
     "hero.btnCafe": "See the café",
     "hero.btnOrder": "Order online",
@@ -53,6 +54,7 @@ window.RDN_I18N = {
     "cafe.cta": "See the full menu & order →",
     "cafe.natsu.label": "In the café, in collaboration with",
     "cafe.natsu.offer": "Premium soft serve, signature coffee, and artisan donuts — a Natsu corner inside RiO de NARA.",
+    "cafe.natsu.link": "Visit natsucoffee.co.id →",
 
     /* venue */
     "venue.h2": "The venue",
@@ -202,6 +204,7 @@ window.RDN_I18N = {
     /* hero */
     "hero.eyebrow": "Vocolaboration Music & Arts, Lounge, Cafe, Bar",
     "hero.sub": "Sebuah gerbang merah di sudut jalan yang tenang di Timika membuka ke halaman yang dirancang untuk makan malam panjang, musik live, dan orang-orang yang membangun budaya kopi Papua versi mereka sendiri.",
+    "hero.btnReserve": "Pesan meja",
     "hero.btnVisit": "Rencanakan kunjungan",
     "hero.btnCafe": "Lihat kafe",
     "hero.btnOrder": "Pesan online",
@@ -230,6 +233,7 @@ window.RDN_I18N = {
     "cafe.cta": "Lihat menu lengkap & pesan →",
     "cafe.natsu.label": "Di kafe kami, berkolaborasi dengan",
     "cafe.natsu.offer": "Soft serve premium, kopi signature, dan donat artisan — sudut Natsu di dalam RiO de NARA.",
+    "cafe.natsu.link": "Kunjungi natsucoffee.co.id →",
 
     /* venue */
     "venue.h2": "Tempatnya",
